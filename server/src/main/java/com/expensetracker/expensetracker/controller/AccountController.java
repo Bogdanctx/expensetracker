@@ -2,6 +2,7 @@ package com.expensetracker.expensetracker.controller;
 
 import com.expensetracker.expensetracker.model.Account;
 import com.expensetracker.expensetracker.repository.AccountRepository;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -48,7 +49,9 @@ public class AccountController {
     public ResponseEntity<?> createAccount(@RequestBody Account account) {
         Optional<Account> existingAccount = repository.findByName(account.getName());
         if(existingAccount.isPresent()) {
-            return ResponseEntity.status(404).build();
+            return ResponseEntity
+                        .status(HttpStatus.CONFLICT)
+                        .body("An account with this name already exists");
         }
 
         repository.save(account);
