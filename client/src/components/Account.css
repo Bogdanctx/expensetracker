@@ -10,7 +10,8 @@
 .card {
     background-color: var(--background-900);
     width: fit-content; 
-    margin: 5px;
+    margin: 20px;
     border-radius: 10px;
     min-width: 18rem;
+    padding: 12px;
 }

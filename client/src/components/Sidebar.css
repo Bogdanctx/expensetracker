@@ -1,0 +1,37 @@
+@import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
+
+#sidebar {
+    background-color: var(--accent-950);
+    width: fit-content;
+    min-width: 13vw;
+    height: 100vh;
+    font-family: "Righteous", sans-serif;
+    text-align: center;
+    border-right: 2px solid var(--accent-600);
+}
+
+#sidebar-title {
+    color: var(--text-300);
+    margin: 0;
+    border-bottom: 2px solid var(--accent-600);
+    padding: 15px;
+    padding-left: 25px;
+    padding-right: 25px;
+}
+
+.sidebar-button {
+    width: 100%;
+    border-radius: 0;
+    margin: 0;
+    background-color: transparent;
+    color: var(--text-200);
+    outline: none;
+    border: none;
+    text-decoration: none;
+    padding: 12px;
+}
+
+.sidebar-button:hover {
+    color: var(--text-200);
+    background-color: var(--accent-800);
+}

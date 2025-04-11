@@ -24,7 +24,6 @@ const Account = ({ account, setSelectedAccount }) => {
 
     return (
         <div className="card" >
-            <div className="card-body">
                 <div className="d-flex justify-content-between">
                     <h5 className="card-title" style={{ color: "var(--text-50)" }}> 
                         {account.name}
@@ -56,7 +55,6 @@ const Account = ({ account, setSelectedAccount }) => {
                 <p className="card-text" style={{ color: "#9CA3AF" }}>
                     Created on: {day} {month} {year}
                 </p>
-            </div>
             </div>
 
     )

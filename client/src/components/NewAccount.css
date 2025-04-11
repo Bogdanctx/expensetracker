@@ -1,0 +1,30 @@
+#new-account-name {
+    background-color: var(--secondary-300);
+    color: var(--text-800);
+    font-size: 15px;
+    outline: none;
+    height: 28px;
+    padding: 0;
+    padding-left: 8px;
+    border-color: transparent;
+}
+
+.account-handle-button {
+    width: 100%;
+    padding: 0;
+    margin-top: 3px;
+}
+
+.newaccount-card {
+    background-color: var(--background-900);
+    width: fit-content; 
+    margin: 5px;
+    border-radius: 10px;
+    min-width: 18rem;
+}
+
+#label-account-name-input {
+    font-size: 14px;
+    margin-bottom: 3px;
+    color: #93C5FD;
+}

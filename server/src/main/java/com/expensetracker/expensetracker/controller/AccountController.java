@@ -44,6 +44,18 @@ public class AccountController {
         return ResponseEntity.notFound().build();
     }
 
+    @PostMapping("/create")
+    public ResponseEntity<?> createAccount(@RequestBody Account account) {
+        Optional<Account> existingAccount = repository.findByName(account.getName());
+        if(existingAccount.isPresent()) {
+            return ResponseEntity.status(404).build();
+        }
+
+        repository.save(account);
+
+        return ResponseEntity.ok().build();
+    }
+
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<?> deleteAccount(@PathVariable Long id) {
         if(!repository.existsById(id)) {

@@ -27,12 +27,13 @@
     height: min-content;
     padding: 0;
     padding-left: 5px;
-    background-color: var(--accent-200);
+    background-color: var(--secondary-300);
     color: var(--text-700);
     font-size: 15px;
     margin-left: 3px;
     flex-direction: column;
     align-self: center;
+    border-color: transparent;
 }
 
 .account-stats {
