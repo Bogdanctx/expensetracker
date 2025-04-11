@@ -48,6 +48,7 @@ public class AccountController {
     @PostMapping("/create")
     public ResponseEntity<?> createAccount(@RequestBody Account account) {
         Optional<Account> existingAccount = repository.findByName(account.getName());
+        
         if(existingAccount.isPresent()) {
             return ResponseEntity
                         .status(HttpStatus.CONFLICT)

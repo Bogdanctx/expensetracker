@@ -8,6 +8,8 @@ import './NewAccount.css';
 const NewAccount = ({ setDisplayNewAccountCard }) => {
     const [accountName, setAccountName] = useState('');
     const [balance, setBalance] = useState('');
+    const [errorMessage, setErrorMessage] = useState('');
+    const [showError, setShowError] = useState(false);
 
     const handleBalanceChange = (e) => {
         const value = e.target.value;
@@ -31,9 +33,17 @@ const NewAccount = ({ setDisplayNewAccountCard }) => {
         try {
             await axios.post('http://localhost:8080/api/accounts/create', newAccount);
             setDisplayNewAccountCard(false);
-            
+
             window.location.reload();
         } catch (error) {
+            setShowError(true);
+
+            if(error.response) {
+                setErrorMessage(error.response.data.toUpperCase());
+            }
+            else {
+                setErrorMessage("UNKNOWN ERROR");        
+            }
             console.error('Error creating account:', error);
         }
     };
@@ -75,6 +85,10 @@ const NewAccount = ({ setDisplayNewAccountCard }) => {
             <button type="button" className="btn btn-danger account-handle-button" onClick={() => setDisplayNewAccountCard(false)}>
                 Cancel
             </button>
+
+            {showError && (
+                <h4 id="new-account-error">[ERROR] {errorMessage}</h4>
+            )}
         </div>
     );
 };
