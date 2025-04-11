@@ -1,0 +1,16 @@
+.account-card-button {
+    width: 25px;
+    height: 25px;
+    background-color: var(--primary-500);
+    color: white;
+    border-radius: 4px;
+    margin-right: 12px;
+}
+
+.card {
+    background-color: var(--background-900);
+    width: fit-content; 
+    margin: 5px;
+    border-radius: 10px;
+    min-width: 18rem;
+}

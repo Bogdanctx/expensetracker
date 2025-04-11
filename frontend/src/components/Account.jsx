@@ -2,7 +2,7 @@ import axios from 'axios';
 import '../assets/bootstrap-5.0.2-dist/css/bootstrap.min.css';
 import '../assets/bootstrap-icons-1.11.3/font/bootstrap-icons.min.css'
 import '../palette.css'
-import { useState } from 'react';
+import './Account.css';
 
 const Account = ({ account, setSelectedAccount }) => {
     var date = new Date(account.created);
@@ -23,16 +23,7 @@ const Account = ({ account, setSelectedAccount }) => {
     }
 
     return (
-        <div 
-            className="card" 
-            style={{ 
-                backgroundColor: "var(--background-900)",
-                width: "fit-content", 
-                margin: "5px", 
-                borderRadius: "10px", 
-                minWidth: "17vw",
-            }}
-        >
+        <div className="card" >
             <div className="card-body">
                 <div className="d-flex justify-content-between">
                     <h5 className="card-title" style={{ color: "var(--text-50)" }}> 
@@ -42,15 +33,7 @@ const Account = ({ account, setSelectedAccount }) => {
                     <div className="d-flex">
                         <button
                             type="button"
-                            className="btn p-2 d-flex align-items-center justify-content-center"
-                            style={{
-                                width: "32px",
-                                height: "32px",
-                                backgroundColor: "var(--primary-500)",
-                                color: "white",
-                                borderRadius: "4px",
-                                marginRight: "12px"
-                            }}
+                            className="btn p-2 d-flex align-items-center justify-content-center account-card-button"
                             aria-label="Fullscreen"
                             onClick={() => setSelectedAccount(account) }
                         >
@@ -59,14 +42,7 @@ const Account = ({ account, setSelectedAccount }) => {
 
                         <button
                             type="button"
-                            className="btn p-2 d-flex align-items-center justify-content-center"
-                            style={{
-                                width: "32px",
-                                height: "32px",
-                                backgroundColor: "var(--primary-500)",
-                                color: "white",
-                                borderRadius: "4px"
-                            }}
+                            className="btn p-2 d-flex align-items-center justify-content-center account-card-button"
                             aria-label="Close"
                             onClick={deleteAccount}
                         >
@@ -75,7 +51,7 @@ const Account = ({ account, setSelectedAccount }) => {
                     </div>
                 </div>
                 <p className="card-text" style={{ color: "#93C5FD" }}>
-                    Balance: <span style={{ color: "#10B981" }}>${account.amount}</span>
+                    Balance: <span style={{ color: "#10B981" }}>${account.balance}</span>
                 </p>
                 <p className="card-text" style={{ color: "#9CA3AF" }}>
                     Created on: {day} {month} {year}

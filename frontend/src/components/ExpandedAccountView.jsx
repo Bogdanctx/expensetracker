@@ -1,9 +1,11 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import './ExpandedAccountView.css';
 
 const ExpandedAccountView = ({ account, onClose }) => {
-    const [activeTab, setActiveTab] = useState("general");
-    const [showAnimation, setShowAnimation] = useState(false);
+    const [activeTab, setActiveTab] = useState("statistics");
+    const [editingAccount, setEditingAccount] = useState(false);
+    const [accountName, setAccountName] = useState(account.name);
+    const [accountBalance, setAccountBalance] = useState(account.amount);
 
     var date = new Date(account.created);
     var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
@@ -12,49 +14,57 @@ const ExpandedAccountView = ({ account, onClose }) => {
     var month = months[date.getMonth()];
     var year = date.getFullYear();
 
-    useEffect(() => {
-        const timeout = setTimeout(() => setShowAnimation(true), 10);
-        return () => clearTimeout(timeout);
-    }, []);
+    const handleInputChange = (setter) => (e) => {
+        const value = e.target.value;
+
+        if(setter == setAccountBalance) {
+            if (!(value === '' || /^[0-9]*\.?[0-9]*$/.test(value))) {
+                return;
+            }
+        }
+
+        setter(value);
+    }
+
 
     return (
-      <div
-            className={`modal-backdrop ${showAnimation ? "show" : ""}`}
-            style={{
-                position: "absolute",
-                top: "calc(50% - (70vh / 2))",
-                left: "calc(50% - (70vw / 2))",
-                width: "70vw",
-                height: "70vh",
-                backgroundColor: "var(--background-900)",
-                color: "white",
-                zIndex: 9999,
-                overflowY: "auto",
-                padding: "2rem",
-                borderRadius: "50px",
-                boxShadow: "0 10px 25px rgba(0,0,0,0.3)",
-                border: "5px solid #4B5563"
-            }}
-        >
+      <form className="expanded-card">
         <div className="d-flex justify-content-between align-items-center mb-4">
-            <h2>{account.name}</h2>
+            { editingAccount && (
+                <div className="form-group">
+                    <input type="text" className="form-control" id="accountName" onChange={handleInputChange(setAccountName)} value={accountName} placeholder="Enter account name"/>
+                </div>
+            )}
+            { !editingAccount && (
+                <h2>{account.name}</h2>
+            )}
+
             <div>
-                <button className="btn" style={{ marginRight: "10px", backgroundColor: "var(--primary-500)", color: "white" }} onClick={onClose}>
-                    <i class="bi bi-gear-wide-connected"></i>
+                <button type="button" className="btn" style={{ marginRight: "10px", backgroundColor: "var(--primary-500)", color: "white" }} onClick={() => setEditingAccount(true) }>
+                    <i className="bi bi-gear-wide-connected"></i>
                 </button>
-                <button className="btn" style={{ backgroundColor: "var(--primary-500)", color: "white" }} onClick={onClose}>
+                <button type="button" className="btn" style={{ backgroundColor: "var(--primary-500)", color: "white" }} onClick={onClose}>
                     <i className="bi bi-x-lg"></i>
                 </button>
             </div>
         </div>
 
-        <p>💰 Balance: ${account.amount}</p>
+        <p className="d-flex align-items-center account-stats">💵 Balance: $
+            { editingAccount && (
+                <input type="text" className="form-control" id="balance-input" onChange={handleInputChange(setAccountBalance)} value={accountBalance} placeholder="Enter new balance"/>
+            )}
+            { !editingAccount && (
+                 account.balance
+            )}
+        </p>
+        <p className="d-flex align-items-center account-stats">💰 Initial balance: ${account.initialBalance}</p>
         <p>📅 Created on: {day} {month} {year}</p>
 
         <ul className="nav nav-tabs mt-4">
             {["statistics", "goals", "transactions"].map((tab) => (
                 <li className="nav-item" key={tab}>
                     <button
+                            type="button"
                             className={`nav-link ${activeTab === tab ? "active" : ""}`}
                             onClick={() => setActiveTab(tab)}
                             style={{ color: "white", backgroundColor: "#374151" }}
@@ -85,7 +95,7 @@ const ExpandedAccountView = ({ account, onClose }) => {
               </div>
             )}
         </div>
-    </div>
+    </form>
   );
 };
 

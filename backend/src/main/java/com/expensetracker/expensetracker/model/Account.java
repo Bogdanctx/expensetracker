@@ -12,20 +12,22 @@ public class Account {
     private Long id;
 
     private String name;
-    private double amount;
+    private double balance;
+    private double initialBalance;
     private LocalDate created;
 
     public Account() {}
 
-    public Account(String name, double amount) {
+    public Account(String name, double balance) {
         this.name = name;
-        this.amount = amount;
+        this.balance = balance;
+        this.initialBalance = balance;
         this.created = LocalDate.now();
     }
 
     @Override
     public String toString() {
-        return "Account [id=" + id + ", name=" + name + ", amount=" + amount + ", date=" + created + "]";
+        return "Account [id=" + id + ", name=" + name + ", amount=" + balance + ", initial_balance=" + initialBalance + ", date=" + created + "]";
     }
 
     public Long getId() {
@@ -40,12 +42,16 @@ public class Account {
         return name;
     }
 
-    public void setAmount(double newAmount) {
-        this.amount = newAmount;
+    public void setBalance(double newBalance) {
+        this.balance = newBalance;
     }
 
-    public double getAmount() {
-        return amount;
+    public double getBalance() {
+        return balance;
+    }
+
+    public double getInitialBalance() {
+        return initialBalance;
     }
 
     public LocalDate getCreated() {

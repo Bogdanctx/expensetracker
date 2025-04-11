@@ -16,9 +16,9 @@ public class AccountController {
     public AccountController(AccountRepository repository) {
         this.repository = repository;
 
-        repository.save(new Account("economii", 2500));
+        /*repository.save(new Account("economii", 2500));
         repository.save(new Account("distractie", 1000));
-        repository.save(new Account("urgenta", 4000));
+        repository.save(new Account("urgenta", 4000));*/
     }
 
 
