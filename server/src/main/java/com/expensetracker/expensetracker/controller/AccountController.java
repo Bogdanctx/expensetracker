@@ -6,6 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/accounts")
@@ -27,6 +28,21 @@ public class AccountController {
         return repository.findAll();
     }
 
+    @PostMapping("/update/{id}")
+    public ResponseEntity<?> updateAccount(@PathVariable Long id, @RequestBody Account account) {
+        Optional<Account> existingAccount = repository.findById(id);
+
+        if(existingAccount.isPresent()) {
+            Account acc = existingAccount.get();
+
+            acc.setName(account.getName());
+            acc.setBalance(account.getBalance());
+
+            repository.save(acc);
+            return ResponseEntity.ok(acc);
+        }
+        return ResponseEntity.notFound().build();
+    }
 
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<?> deleteAccount(@PathVariable Long id) {

@@ -30,7 +30,7 @@ function App() {
             ))}
           </div>
             {selectedAccount && (
-              <ExpandedAccountView account={selectedAccount} onClose={() => setSelectedAccount(null)} />
+              <ExpandedAccountView account={selectedAccount} setSelectedAccount={setSelectedAccount} />
             )}
         </div>
       );
