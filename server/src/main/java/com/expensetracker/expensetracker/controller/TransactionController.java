@@ -3,10 +3,8 @@ package com.expensetracker.expensetracker.controller;
 import com.expensetracker.expensetracker.model.Transaction;
 import com.expensetracker.expensetracker.repository.AccountRepository;
 import com.expensetracker.expensetracker.repository.TransactionRepository;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -46,5 +44,15 @@ public class TransactionController {
     @GetMapping
     public List<Transaction> getAllTransactions() {
         return transactionRepository.findAll();
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<?> deleteTransaction(@PathVariable Long id) {
+        if (!transactionRepository.existsById(id)) {
+            return ResponseEntity.notFound().build();
+        }
+
+        transactionRepository.deleteById(id);
+        return ResponseEntity.ok().build();
     }
 }
