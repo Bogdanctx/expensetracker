@@ -32,9 +32,12 @@ function App() {
             <div id="content">
                 <div id="first-half">
                     <h1 className="box-title" >TRANSACTIONS</h1>
-                    {transactions.map((transaction) => (
-                        <Transaction key = {transaction.id} transaction={transaction} />
-                    ))}
+                    <br />
+                    <div id="inner-box-first-half">
+                        {transactions.map((transaction) => (
+                            <Transaction key = {transaction.id} transaction={transaction} />
+                        ))}
+                    </div>
                 </div>
 
                 <div id="second-half">

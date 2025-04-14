@@ -2,6 +2,7 @@
 
 #content {
     display: flex;
+    flex-direction: row;
 }
 
 #first-half {
@@ -9,6 +10,19 @@
     max-width: 43vw;
 
     border-right: 1px solid var(--accent-200);
+
+    overflow-y: auto;
+}
+
+#inner-box-first-half {
+    display: flex;
+    flex-wrap: wrap;
+
+    justify-content: center;
+    align-items: center;
+
+    column-gap: 1vw;
+    row-gap: 2vh;
 }
 
 #second-half {
