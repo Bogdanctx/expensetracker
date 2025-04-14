@@ -1,0 +1,27 @@
+#content {
+    display: flex;
+}
+
+#first-half {
+    min-width: 43vw;
+    max-width: 43vw;
+
+    border-right: 1px solid var(--accent-200);
+}
+
+#second-half {
+    min-width: 44vw;
+    max-width: 44vw;
+}
+
+#upper-box {
+    max-height: 50%; /* Remove scroll restriction */
+    overflow-y: scroll;
+    padding-left: 5vw;
+
+    display: flex;
+    flex-wrap: wrap; /* 👈 allow wrapping */
+
+    
+    border-bottom: 1px solid var(--accent-200);
+} 
