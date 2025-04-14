@@ -1,0 +1,7 @@
+.transaction-card {
+    background-color: var(--background-900);
+    border-radius: 10px;
+    padding: 12px;
+    height: fit-content;
+    max-width: 18vw;
+}
