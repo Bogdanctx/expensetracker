@@ -31,21 +31,28 @@ function App() {
             <Sidebar setDisplayNewAccountCard={setDisplayNewAccountCard} />
             <div id="content">
                 <div id="first-half">
-                    <div style={{opacity: selectedAccount ? "0.4" : "1"}}>
-                        {displayNewAccountCard && (
-                            <NewAccount setDisplayNewAccountCard={setDisplayNewAccountCard} />
-                        )}
-                        {accounts.map((account) => (
-                            <Account key = {account.id} account={account} setSelectedAccount={setSelectedAccount} />
-                        ))}
-                    </div>
+                    <h1 className="box-title" >TRANSACTIONS</h1>
+                    {transactions.map((transaction) => (
+                        <Transaction key = {transaction.id} transaction={transaction} />
+                    ))}
                 </div>
 
                 <div id="second-half">
-                    <div id="upper-box">
-                        {transactions.map((transaction) => (
-                            <Transaction key = {transaction.id} transaction={transaction} />
-                        ))}
+                    <div id="upper-box" style={{opacity: selectedAccount ? "0.4" : "1"}}>
+                        <h1 className="box-title" >ACCOUNTS</h1>
+                        <div id="inner-upper-box">
+                            
+                            {displayNewAccountCard && (
+                                <NewAccount setDisplayNewAccountCard={setDisplayNewAccountCard} />
+                            )}
+                            {accounts.map((account) => (
+                                <Account key={account.id} account={account} setSelectedAccount={setSelectedAccount} />
+                            ))}
+                        </div>
+                    </div>
+                    
+                    <div id="lower-box">
+                        <h1 className="box-title" >GOALS</h1>
                     </div>
                 </div>
                 

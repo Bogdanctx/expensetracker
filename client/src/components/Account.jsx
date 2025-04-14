@@ -24,39 +24,38 @@ const Account = ({ account, setSelectedAccount }) => {
 
     return (
         <div className="card" >
-                <div className="d-flex justify-content-between">
-                    <h5 className="card-title" style={{ color: "var(--text-50)" }}> 
-                        {account.name}
-                    </h5>
+            <div className="d-flex justify-content-between">
+                <h5 className="card-title" style={{ color: "var(--text-50)" }}> 
+                    {account.name}
+                </h5>
 
-                    <div className="d-flex">
-                        <button
-                            type="button"
-                            className="btn p-2 d-flex align-items-center justify-content-center account-card-button"
-                            aria-label="Fullscreen"
-                            onClick={() => setSelectedAccount(account) }
-                        >
-                            <i className="bi bi-arrows-fullscreen"></i>
-                        </button>
+                <div className="d-flex">
+                    <button
+                        type="button"
+                        className="btn p-2 d-flex align-items-center justify-content-center account-card-button"
+                        aria-label="Fullscreen"
+                        onClick={() => setSelectedAccount(account) }
+                    >
+                        <i className="bi bi-arrows-fullscreen"></i>
+                    </button>
 
-                        <button
-                            type="button"
-                            className="btn p-2 d-flex align-items-center justify-content-center account-card-button"
-                            aria-label="Close"
-                            onClick={deleteAccount}
-                        >
-                            <i className="bi bi-x-lg"></i>
-                        </button>
-                    </div>
+                    <button
+                        type="button"
+                        className="btn p-2 d-flex align-items-center justify-content-center account-card-button"
+                        aria-label="Close"
+                        onClick={deleteAccount}
+                    >
+                        <i className="bi bi-x-lg"></i>
+                    </button>
                 </div>
-                <p className="card-text" style={{ color: "#93C5FD" }}>
-                    Balance: <span style={{ color: "#10B981" }}>${account.balance}</span>
-                </p>
-                <p className="card-text" style={{ color: "#9CA3AF" }}>
-                    Created on: {day} {month} {year}
-                </p>
             </div>
-
+            <p className="card-text" style={{ color: "#93C5FD" }}>
+                Balance: <span style={{ color: "#10B981" }}>${account.balance}</span>
+            </p>
+            <p className="card-text" style={{ color: "#9CA3AF" }}>
+                Created on: {day} {month} {year}
+            </p>
+        </div>
     )
 }
 

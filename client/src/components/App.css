@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
+
 #content {
     display: flex;
 }
@@ -15,13 +17,29 @@
 }
 
 #upper-box {
-    max-height: 50%; /* Remove scroll restriction */
-    overflow-y: scroll;
-    padding-left: 5vw;
-
-    display: flex;
-    flex-wrap: wrap; /* 👈 allow wrapping */
-
+    height: 50vh;
+    max-height: 50vh;
     
     border-bottom: 1px solid var(--accent-200);
+
+    overflow-y: scroll;
 } 
+
+.box-title {
+    color: white;
+    font-family: "Righteous", sans-serif;
+    font-size: 15px;
+    padding: 12px;
+    margin-bottom: 10px;
+}
+
+#inner-upper-box {
+    display: flex;
+    flex-wrap: wrap;
+
+    justify-content: center;
+    row-gap: 2vw;
+    column-gap: 4vh;
+
+    align-items: center;
+}
