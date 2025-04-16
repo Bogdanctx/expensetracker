@@ -1,4 +1,4 @@
-#new-account-name {
+.new_account_name {
     background-color: var(--secondary-300);
     color: var(--text-800);
     font-size: 15px;
@@ -9,13 +9,13 @@
     border-color: transparent;
 }
 
-.account-handle-button {
+.account_handle_button {
     width: 100%;
     padding: 0;
     margin-top: 3px;
 }
 
-.newaccount-card {
+.newaccount_card {
     background-color: var(--background-900);
     width: fit-content; 
     margin: 20px;
@@ -23,13 +23,13 @@
     min-width: 18rem;
 }
 
-#label-account-name-input {
+.label_account_name_input {
     font-size: 14px;
     margin-bottom: 3px;
     color: #93C5FD;
 }
 
-#new-account-error {
+.new_account_error {
     font-size: 16px;
     padding: 15px;
     color: rgb(156, 60, 60);

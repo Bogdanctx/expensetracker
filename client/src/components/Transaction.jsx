@@ -2,7 +2,7 @@ import axios from 'axios';
 import '../assets/bootstrap-5.0.2-dist/css/bootstrap.min.css';
 import '../assets/bootstrap-icons-1.11.3/font/bootstrap-icons.min.css'
 import '../palette.css'
-import './Transaction.css';
+import styles from './Transaction.module.css';
 
 const Transaction = ({ transaction }) => {
     var date = new Date(transaction.added);
@@ -23,16 +23,16 @@ const Transaction = ({ transaction }) => {
     }
 
     return (
-        <div className="transaction-card" >
+        <div className={`${styles.transaction_card}`} >
                 <div className="d-flex justify-content-between">
-                    <h5 className="card-title" style={{ color: "var(--text-50)" }}> 
+                    <h5 className={`${styles.card_title}`} style={{ color: "var(--text-50)" }}> 
                         {transaction.title}
                     </h5>
 
                     <div className="d-flex">
                         <button
                             type="button"
-                            className="btn p-2 d-flex align-items-center justify-content-center account-card-button"
+                            className={`btn p-2 d-flex align-items-center justify-content-center`}
                             aria-label="Close"
                             onClick={deleteTransaction}
                         >

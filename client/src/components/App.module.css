@@ -1,11 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
 
-#content {
+.content {
     display: flex;
     flex-direction: row;
 }
 
-#first-half {
+.first_half {
     min-width: 43vw;
     max-width: 43vw;
 
@@ -14,7 +14,7 @@
     overflow-y: auto;
 }
 
-#inner-box-first-half {
+.inner_box_first_half {
     display: flex;
     flex-wrap: wrap;
 
@@ -25,12 +25,12 @@
     row-gap: 2vh;
 }
 
-#second-half {
+.second_half {
     min-width: 44vw;
     max-width: 44vw;
 }
 
-#upper-box {
+.upper_box {
     height: 50vh;
     max-height: 50vh;
     
@@ -39,7 +39,7 @@
     overflow-y: scroll;
 } 
 
-.box-title {
+.box_title {
     color: white;
     font-family: "Righteous", sans-serif;
     font-size: 15px;
@@ -47,7 +47,7 @@
     margin-bottom: 10px;
 }
 
-#inner-upper-box {
+.inner_upper_box {
     display: flex;
     flex-wrap: wrap;
 

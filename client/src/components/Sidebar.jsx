@@ -1,12 +1,12 @@
 import { useState } from 'react';
-import './Sidebar.css';
+import styles from './Sidebar.module.css';
 
 const Sidebar = ({ setDisplayNewAccountCard }) => {
     return (
-        <div id="sidebar">
-            <h1 id="sidebar-title">EXPENSE <br /> TRACKER</h1>
+        <div className={`${styles.sidebar}`} id="sidebar">
+            <h1 className={`${styles.sidebar_title}`} id="sidebar_title">EXPENSE <br /> TRACKER</h1>
             
-            <button type="button" className='sidebar-button' onClick={() => setDisplayNewAccountCard(true)}>
+            <button type="button" className={`${styles.sidebar_button}`} onClick={() => setDisplayNewAccountCard(true)}>
                 <i className="bi bi-plus-square" style={{ float: "left" }}></i>
                 Add account
             </button>

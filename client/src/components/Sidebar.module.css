@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
 
-#sidebar {
+.sidebar {
     background-color: var(--accent-950);
     width: fit-content;
     min-width: 13vw;
@@ -10,7 +10,7 @@
     border-right: 2px solid var(--accent-600);
 }
 
-#sidebar-title {
+.sidebar_title {
     color: var(--text-300);
     margin: 0;
     border-bottom: 2px solid var(--accent-600);
@@ -19,7 +19,7 @@
     padding-right: 25px;
 }
 
-.sidebar-button {
+.sidebar_button {
     width: 100%;
     border-radius: 0;
     margin: 0;
@@ -31,7 +31,7 @@
     padding: 12px;
 }
 
-.sidebar-button:hover {
+.sidebar_button:hover {
     color: var(--text-200);
     background-color: var(--accent-800);
 }

@@ -19,7 +19,7 @@ public class TransactionController {
     public TransactionController(TransactionRepository transactionRepository, AccountRepository accountRepository) {
         this.transactionRepository = transactionRepository;
 
-        Account account = accountRepository.findByName("sanatate")
+        /*Account account = accountRepository.findByName("sanatate")
                 .orElseThrow(() -> new RuntimeException("Account not found"));
 
         transactionRepository.save(
@@ -43,7 +43,7 @@ public class TransactionController {
         transactionRepository.save(
                 new Transaction(41, "Factura curent", "am platit factura la curent pe 13.04.2025", LocalDate.of(2025, 4, 14), account)
         );
-
+*/
     }
 
     @GetMapping("/test")

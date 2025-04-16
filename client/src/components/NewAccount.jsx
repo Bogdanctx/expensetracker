@@ -3,7 +3,7 @@ import axios from 'axios';
 import '../assets/bootstrap-5.0.2-dist/css/bootstrap.min.css';
 import '../assets/bootstrap-icons-1.11.3/font/bootstrap-icons.min.css';
 import '../palette.css';
-import './NewAccount.css';
+import styles from './NewAccount.module.css';
 
 const NewAccount = ({ setDisplayNewAccountCard }) => {
     const [accountName, setAccountName] = useState('');
@@ -49,14 +49,14 @@ const NewAccount = ({ setDisplayNewAccountCard }) => {
     };
 
     return (
-        <div className="newaccount-card">
+        <div className={`${styles.newaccount_card}`}>
             <div className="d-flex justify-content-between" style={{ padding: "15px", paddingBottom: "5px" }}>
-                <h5 className="card-title" style={{ color: "var(--text-50)" }}>
-                    <label htmlFor="new-account-name" id="label-account-name-input">Account name</label>
+                <h5 className={`${styles.card_title}`} style={{ color: "var(--text-50)" }}>
+                    <label htmlFor="new_account_name" className={`${styles.label_account_name_input}`} id="label_account_name_input">Account name</label>
                     <input
                         type="text"
                         className="form-control"
-                        id="new-account-name"
+                        id="new_account_name"
                         placeholder="Enter account name"
                         value={accountName}
                         onChange={(e) => setAccountName(e.target.value)}
@@ -65,12 +65,12 @@ const NewAccount = ({ setDisplayNewAccountCard }) => {
                 </h5>
             </div>
 
-            <p className="card-text" style={{ color: "#93C5FD", paddingLeft: "15px", display: "flex" }}>
+            <p className={`${styles.card_text}`} style={{ color: "#93C5FD", paddingLeft: "15px", display: "flex" }}>
                 Balance: <span style={{ color: "#10B981" }}>$</span>
                 <input
                     type="text"
                     className="form-control ms-2"
-                    id="add-funds-input"
+                    id="add_funds_input"
                     placeholder="Enter the amount"
                     value={balance}
                     onChange={handleBalanceChange}
@@ -78,16 +78,16 @@ const NewAccount = ({ setDisplayNewAccountCard }) => {
                 />
             </p>
 
-            <button type="button" className="btn btn-success account-handle-button" onClick={handleCreate}>
+            <button type="button" className={`btn btn-success ${styles.account_handle_button}`} onClick={handleCreate}>
                 Create
             </button>
             <br />
-            <button type="button" className="btn btn-danger account-handle-button" onClick={() => setDisplayNewAccountCard(false)}>
+            <button type="button" className={`btn btn-danger ${styles.account_handle_button}`} onClick={() => setDisplayNewAccountCard(false)}>
                 Cancel
             </button>
 
             {showError && (
-                <h4 id="new-account-error">[ERROR] {errorMessage}</h4>
+                <h4 className={`${styles.snew_account_error}`} id="new_account_error">[ERROR] {errorMessage}</h4>
             )}
         </div>
     );

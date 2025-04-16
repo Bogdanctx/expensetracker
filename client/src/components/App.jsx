@@ -4,7 +4,7 @@ import Account from './Account';
 import ExpandedAccountView from './ExpandedAccountView';
 import Sidebar from './Sidebar';
 import NewAccount from './NewAccount';
-import './App.css';
+import styles from './App.module.css';
 import Transaction from './Transaction';
 
 function App() {
@@ -29,21 +29,21 @@ function App() {
     return (
         <div style={{ display: "flex" }}>
             <Sidebar setDisplayNewAccountCard={setDisplayNewAccountCard} />
-            <div id="content">
-                <div id="first-half">
-                    <h1 className="box-title" >TRANSACTIONS</h1>
+            <div className={`${styles.content}`} id="content">
+                <div className={`${styles.first_half}`} id="first_half">
+                    <h1 className={`${styles.box_title}`} >TRANSACTIONS</h1>
                     <br />
-                    <div id="inner-box-first-half">
+                    <div className={`${styles.inner_box_first_half}`} id='inner_box_first_half'>
                         {transactions.map((transaction) => (
                             <Transaction key = {transaction.id} transaction={transaction} />
                         ))}
                     </div>
                 </div>
 
-                <div id="second-half">
-                    <div id="upper-box" style={{opacity: selectedAccount ? "0.4" : "1"}}>
-                        <h1 className="box-title" >ACCOUNTS</h1>
-                        <div id="inner-upper-box">
+                <div className={`${styles.second_half}`} id='second_half'>
+                    <div className={`${styles.upper_box}`} id='upper_box' style={{opacity: selectedAccount ? "0.4" : "1"}}>
+                        <h1 className={`${styles.box_title}`} >ACCOUNTS</h1>
+                        <div className={`${styles.inner_upper_box}`} id="inner_upper_box">
                             
                             {displayNewAccountCard && (
                                 <NewAccount setDisplayNewAccountCard={setDisplayNewAccountCard} />
@@ -54,8 +54,8 @@ function App() {
                         </div>
                     </div>
                     
-                    <div id="lower-box">
-                        <h1 className="box-title" >GOALS</h1>
+                    <div id='lower_box' className={`${styles.lower_box}`}>
+                        <h1 className={`${styles.box_title}`} >GOALS</h1>
                     </div>
                 </div>
                 

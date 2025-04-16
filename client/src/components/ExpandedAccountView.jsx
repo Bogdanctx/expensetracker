@@ -1,6 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
-import './ExpandedAccountView.css';
+import styles from './ExpandedAccountView.module.css';
 
 const ExpandedAccountView = ({ account, setSelectedAccount }) => {
     const [activeTab, setActiveTab] = useState("statistics");
@@ -13,7 +13,7 @@ const ExpandedAccountView = ({ account, setSelectedAccount }) => {
     var date = new Date(account.created);
     var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
-    var day = date.getDate(); // Use `getDate()` instead of `getDay()` for day of the month
+    var day = date.getDate();
     var month = months[date.getMonth()];
     var year = date.getFullYear();
 
@@ -28,11 +28,11 @@ const ExpandedAccountView = ({ account, setSelectedAccount }) => {
     }
 
     return (
-      <form className="expanded-card">
+      <form className={`${styles.expanded_card}`}>
         <div className="d-flex justify-content-between align-items-center mb-4">
             { editingAccount && (
                 <div className="form-group">
-                    <input type="text" className="form-control" id="accountName" 
+                    <input type="text" className="form-control" id={styles.accountName} 
                             onChange={(e) => {
                                 const value = e.target.value;
 
@@ -50,7 +50,7 @@ const ExpandedAccountView = ({ account, setSelectedAccount }) => {
                 { editingAccount && (
                     <button 
                             type="submit" 
-                            className="btn btn-success expanded-card-action-button" 
+                            className={`btn btn-success ${styles.action_button}`} 
                             style={{ backgroundColor: "#5cb85c", marginRight: "10px" }}
                             onClick={() => {
                                 setEditingAccount(false); // disable edit mode
@@ -62,7 +62,7 @@ const ExpandedAccountView = ({ account, setSelectedAccount }) => {
                 )}
                 
                 { !editingAccount && (
-                    <button type="button" className="btn expanded-card-action-button" style={{ marginRight: "10px" }} 
+                    <button type="button" className={`btn ${styles.action_button}`} style={{ marginRight: "10px" }} 
                         onClick={() => {
                             setEditingAccount(true); 
                         }}
@@ -71,13 +71,13 @@ const ExpandedAccountView = ({ account, setSelectedAccount }) => {
                     </button>
                 )}
 
-                <button type="button" className="btn expanded-card-action-button" onClick={() => setSelectedAccount(null)}>
+                <button type="button" className={`btn ${styles.action_button}`} onClick={() => setSelectedAccount(null)}>
                     <i className="bi bi-x-lg"></i>
                 </button>
             </div>
         </div>
 
-        <p className="d-flex align-items-center account-stats">💵 Balance: ${accountBalance}</p>
+        <p className={`d-flex align-items-center ${styles.account_stats}`}>💵 Balance: ${accountBalance}</p>
         { showFundsInput && (
             <p className="d-flex align-items-center account-stats">💰 Add funds: $
                 <input type="text" className="form-control" id="add-funds-input" 
@@ -87,12 +87,12 @@ const ExpandedAccountView = ({ account, setSelectedAccount }) => {
                                 setFunds(value);                
                             }
                         }} 
-                        placeholder="Enter the amount"/
-                >
+                        placeholder="Enter the amount"
+                />
                 <button 
                         type="button" 
-                        className="btn btn-warning" 
-                        id="add-funds-button" 
+                        className={`btn btn-warning ${styles.add_funds_button}`} 
+                        id="add_funds_button" 
                         style={{ marginRight: "10px" }} 
                         onClick={() => {
                             const newBalance = parseFloat(accountBalance) + parseFloat(funds);
@@ -103,15 +103,15 @@ const ExpandedAccountView = ({ account, setSelectedAccount }) => {
                             saveAccountSettings();
                         }}
                     >
-                    <i className="bi bi-plus-square" style= {{ color: "var(--primary-100)", fontSize: "22px" }}></i>
+                    <i className="bi bi-plus-square" style= {{ color: "var(--primary-100)", fontSize: "22px" }} />
                 </button>
             </p>    
         )}
         { !showFundsInput && (
             <button 
                     type="button" 
-                    className="btn btn-info" 
-                    id="toggle-add-funds"  
+                    className={`btn btn-info ${styles.toggle_add_funds}`} 
+                    id="toggle_add_funds"  
                     onClick={() => {
                         setShowFundsInput(true);
                     }}
