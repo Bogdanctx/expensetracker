@@ -32,7 +32,7 @@ const ExpandedAccountView = ({ account, setSelectedAccount }) => {
         <div className="d-flex justify-content-between align-items-center mb-4">
             { editingAccount && (
                 <div className="form-group">
-                    <input type="text" className="form-control" id={styles.accountName} 
+                    <input type="text" className={`form-control ${styles.account_name}`} id='account_name' 
                             onChange={(e) => {
                                 const value = e.target.value;
 
@@ -77,10 +77,25 @@ const ExpandedAccountView = ({ account, setSelectedAccount }) => {
             </div>
         </div>
 
-        <p className={`d-flex align-items-center ${styles.account_stats}`}>💵 Balance: ${accountBalance}</p>
+        <div style={{ display: "flex" }}>
+            <p className={`d-flex align-items-center ${styles.account_stats}`}>💵 Balance: ${accountBalance}</p>
+            { !showFundsInput && (
+                <button 
+                        type="button" 
+                        className={`btn btn-info ${styles.toggle_add_funds}`} 
+                        id="toggle_add_funds"  
+                        onClick={() => {
+                            setShowFundsInput(true);
+                        }}
+                    >
+                        <i className="bi bi-cash-coin" style={{ verticalAlign: "middle", margin: "6px" }}></i>
+                        Add funds
+                </button>
+            )}
+        </div>
         { showFundsInput && (
-            <p className="d-flex align-items-center account-stats">💰 Add funds: $
-                <input type="text" className="form-control" id="add-funds-input" 
+            <p className={`d-flex align-items-center ${styles.account_stats}`}>💰 Add funds: $
+                <input type="text" className={`form-control ${styles.add_funds_input}`} id="add_funds_input" 
                         onChange={(e) => {
                             const value = e.target.value;
                             if (value === '' || /^[0-9]*\.?[0-9]*$/.test(value)) {
@@ -91,7 +106,7 @@ const ExpandedAccountView = ({ account, setSelectedAccount }) => {
                 />
                 <button 
                         type="button" 
-                        className={`btn btn-warning ${styles.add_funds_button}`} 
+                        className={`btn ${styles.add_funds_button}`} 
                         id="add_funds_button" 
                         style={{ marginRight: "10px" }} 
                         onClick={() => {
@@ -105,23 +120,21 @@ const ExpandedAccountView = ({ account, setSelectedAccount }) => {
                     >
                     <i className="bi bi-plus-square" style= {{ color: "var(--primary-100)", fontSize: "22px" }} />
                 </button>
+                <button 
+                        type="button" 
+                        className={`btn ${styles.add_funds_button}`} 
+                        id="add_funds_button" 
+                        style={{ marginRight: "10px" }} 
+                        onClick={() => {                      
+                            setShowFundsInput(false);
+                        }}
+                    >
+                    <i className="bi bi-x-square" style= {{ color: "var(--primary-100)", fontSize: "22px" }} />
+                </button>
             </p>    
         )}
-        { !showFundsInput && (
-            <button 
-                    type="button" 
-                    className={`btn btn-info ${styles.toggle_add_funds}`} 
-                    id="toggle_add_funds"  
-                    onClick={() => {
-                        setShowFundsInput(true);
-                    }}
-                >
-                    <i className="bi bi-cash-coin" style={{ verticalAlign: "middle", margin: "6px" }}></i>
-                    Add funds
-            </button>
-        )}
         
-        <p id="created-on">📅 Created on: {day} {month} {year}</p>
+        <p className={`${styles.created_on}`} id="created_on">📅 Created on: {day} {month} {year}</p>
 
         <ul className="nav nav-tabs mt-4">
             {["statistics", "goals", "transactions"].map((tab) => (
