@@ -4,11 +4,13 @@ import com.expensetracker.expensetracker.model.Account;
 import com.expensetracker.expensetracker.model.Transaction;
 import com.expensetracker.expensetracker.repository.AccountRepository;
 import com.expensetracker.expensetracker.repository.TransactionRepository;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/transactions")
@@ -54,6 +56,17 @@ public class TransactionController {
     @GetMapping
     public List<Transaction> getAllTransactions() {
         return transactionRepository.findAll();
+    }
+
+    @PostMapping("/create")
+    public ResponseEntity<?> createTransaction(@RequestBody Transaction transaction) {
+        try {
+            transactionRepository.save(transaction);
+        } catch(Exception e) {
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+        }
+        
+        return ResponseEntity.ok().build();
     }
 
     @DeleteMapping("/delete/{id}")

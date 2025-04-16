@@ -24,32 +24,34 @@ const Transaction = ({ transaction }) => {
 
     return (
         <div className={`${styles.transaction_card}`} >
-                <div className="d-flex justify-content-between">
-                    <h5 className={`${styles.card_title}`} style={{ color: "var(--text-50)" }}> 
-                        {transaction.title}
-                    </h5>
+            <div className={`d-flex justify-content-between`}>
+                <h5 className={`${styles.card_title}`} style={{ color: "var(--text-50)" }}> 
+                    {transaction.title}
+                </h5>
 
-                    <div className="d-flex">
-                        <button
-                            type="button"
-                            className={`btn p-2 d-flex align-items-center justify-content-center`}
-                            aria-label="Close"
-                            onClick={deleteTransaction}
-                        >
-                            <i className="bi bi-x-lg"></i>
-                        </button>
-                    </div>
+                <div className="d-flex">
+                    <button
+                        type="button"
+                        className={`btn p-2 d-flex align-items-center justify-content-center ${styles.card_button}`}
+                        aria-label="Close"
+                        onClick={deleteTransaction}
+                    >
+                        <i className="bi bi-x-lg"></i>
+                    </button>
                 </div>
-                <p className="card-text" style={{ color: "var(--accent-300)", margin: 0 }}>
-                    Description: {transaction.description}
-                </p>
-                <p className="card-text" style={{ color: "#93C5FD" }}>
-                    Amount: <span style={{ color: "#10B981" }}>${transaction.amount}</span>
-                </p>
-                <p className="card-text" style={{ color: "#9CA3AF" }}>
-                    Added on: {day} {month} {year}
-                </p>
             </div>
+            {transaction.description.length > 0 && (
+                <p style={{ color: "var(--accent-300)", marginBottom: "5px" }}>
+                    <i className={`bi bi-info-circle`} style={{ color: "var(--secondary-200)" }} /> {transaction.description}
+                </p>
+            )}
+            <p style={{ color: "#93C5FD" }}>
+                Amount: <span style={{ color: "#10B981" }}>${transaction.amount}</span>
+            </p>
+            <p style={{ color: "#9CA3AF", justifySelf: "baseline" }}>
+                Added on: {day} {month} {year}
+            </p>
+        </div>
     )
 }
 

@@ -1,7 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
+
 .transaction_card {
     background-color: var(--background-900);
     border-radius: 10px;
     padding: 12px;
+    padding-bottom: 0;
     height: fit-content;
     max-width: 18vw;
+    min-width: 18vw;
+}
+
+.card_title {
+    font-family: "Righteous", sans-serif;
+}
+
+.card_button {
+    width: 25px;
+    height: 25px;
+    background-color: var(--primary-500);
+    color: white;
+    border-radius: 4px;
+    margin-right: 12px;
 }

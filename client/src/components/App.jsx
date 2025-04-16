@@ -6,12 +6,14 @@ import Sidebar from './Sidebar';
 import NewAccount from './NewAccount';
 import styles from './App.module.css';
 import Transaction from './Transaction';
+import NewTransaction from './NewTransaction';
 
 function App() {
     const [accounts, setAccounts] = useState([]);
     const [transactions, setTransactions] = useState([]);
     const [selectedAccount, setSelectedAccount] = useState(null);
     const [displayNewAccountCard, setDisplayNewAccountCard] = useState(false);
+    const [displayNewTransactionCard, setDisplayNewTransactionCard] = useState(false);
 
     useEffect(() => {
         const fetchData = async (setter, link) => {
@@ -28,12 +30,16 @@ function App() {
 
     return (
         <div style={{ display: "flex" }}>
-            <Sidebar setDisplayNewAccountCard={setDisplayNewAccountCard} />
+            <Sidebar setDisplayNewAccountCard={setDisplayNewAccountCard} setDisplayNewTransactionCard={setDisplayNewTransactionCard} />
             <div className={`${styles.content}`} id="content">
                 <div className={`${styles.first_half}`} id="first_half">
                     <h1 className={`${styles.box_title}`} >TRANSACTIONS</h1>
                     <br />
                     <div className={`${styles.inner_box_first_half}`} id='inner_box_first_half'>
+                        {displayNewTransactionCard && (
+                            <NewTransaction setDisplayNewTransactionCard={setDisplayNewTransactionCard} accounts={accounts} />
+                        )}
+
                         {transactions.map((transaction) => (
                             <Transaction key = {transaction.id} transaction={transaction} />
                         ))}
@@ -44,10 +50,10 @@ function App() {
                     <div className={`${styles.upper_box}`} id='upper_box' style={{opacity: selectedAccount ? "0.4" : "1"}}>
                         <h1 className={`${styles.box_title}`} >ACCOUNTS</h1>
                         <div className={`${styles.inner_upper_box}`} id="inner_upper_box">
-                            
                             {displayNewAccountCard && (
                                 <NewAccount setDisplayNewAccountCard={setDisplayNewAccountCard} />
                             )}
+
                             {accounts.map((account) => (
                                 <Account key={account.id} account={account} setSelectedAccount={setSelectedAccount} />
                             ))}
