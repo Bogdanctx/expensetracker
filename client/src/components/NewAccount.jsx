@@ -50,12 +50,12 @@ const NewAccount = ({ setDisplayNewAccountCard }) => {
 
     return (
         <div className={`${styles.newaccount_card}`}>
-            <div className="d-flex justify-content-between" style={{ padding: "15px", paddingBottom: "5px" }}>
+            <div className={`justify-content-between ${styles.account_inputs}`}>
                 <h5 className={`${styles.card_title}`} style={{ color: "var(--text-50)" }}>
                     <label htmlFor="new_account_name" className={`${styles.label_account_name_input}`} id="label_account_name_input">Account name</label>
                     <input
                         type="text"
-                        className="form-control"
+                        className={`form-control ${styles.new_account_name}`}
                         id="new_account_name"
                         placeholder="Enter account name"
                         value={accountName}
@@ -63,31 +63,33 @@ const NewAccount = ({ setDisplayNewAccountCard }) => {
                         required
                     />
                 </h5>
+
+                <p className={`${styles.card_text}`} style={{ color: "#93C5FD" }}>
+                    Balance: <span style={{ color: "#10B981" }}></span>
+                    <input
+                        type="text"
+                        className={`form-control ${styles.add_funds_input}`}
+                        id="add_funds_input"
+                        placeholder="Enter account balance"
+                        value={balance}
+                        onChange={handleBalanceChange}
+                        required
+                    />
+                </p>
             </div>
 
-            <p className={`${styles.card_text}`} style={{ color: "#93C5FD", paddingLeft: "15px", display: "flex" }}>
-                Balance: <span style={{ color: "#10B981" }}>$</span>
-                <input
-                    type="text"
-                    className="form-control ms-2"
-                    id="add_funds_input"
-                    placeholder="Enter the amount"
-                    value={balance}
-                    onChange={handleBalanceChange}
-                    required
-                />
-            </p>
-
-            <button type="button" className={`btn btn-success ${styles.account_handle_button}`} onClick={handleCreate}>
-                Create
-            </button>
-            <br />
-            <button type="button" className={`btn btn-danger ${styles.account_handle_button}`} onClick={() => setDisplayNewAccountCard(false)}>
-                Cancel
-            </button>
+            <div className={`${styles.new_account_buttons}`}>
+                <button type="button" className={`btn btn-success ${styles.account_handle_button}`} onClick={handleCreate}>
+                    Create
+                </button>
+                <br />
+                <button type="button" className={`btn btn-danger ${styles.account_handle_button}`} onClick={() => setDisplayNewAccountCard(false)}>
+                    Cancel
+                </button>
+            </div>
 
             {showError && (
-                <h4 className={`${styles.snew_account_error}`} id="new_account_error">[ERROR] {errorMessage}</h4>
+                <h4 className={`${styles.new_account_error}`} id="new_account_error">[ERROR] {errorMessage}</h4>
             )}
         </div>
     );
