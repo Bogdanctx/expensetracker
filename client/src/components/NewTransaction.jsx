@@ -10,6 +10,7 @@ import account_styles from './NewAccount.module.css';
 const NewAccount = ({ setDisplayNewTransactionCard, accounts }) => {
     const [transactionTitle, setTransactionTitle] = useState('');
     const [description, setDescription] = useState('');
+    const [selectedAccount, setSelectedAccount] = useState('');
     const [amount, setAmount] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
     const [showError, setShowError] = useState(false);
@@ -27,11 +28,14 @@ const NewAccount = ({ setDisplayNewTransactionCard, accounts }) => {
             return;
         }
 
+        const account_id = accounts.find((account) => account.id == selectedAccount);
+        
         const newTransaction = {
             title: transactionTitle,
             amount: parseFloat(amount),
             description: description,
-            added: new Date().toISOString()
+            added: new Date().toISOString(),
+            account_id: account_id
         };
 
         try {
@@ -90,8 +94,13 @@ const NewAccount = ({ setDisplayNewTransactionCard, accounts }) => {
 
                 
                 <div style={{ width: "100%", textAlign: "center", padding: "13px" }}>
-                    <select className="form-select" style={{backgroundColor: "var(--primary-500)", color: "var(--text-100)", border: "none"}} aria-label='Select an account'>
-                        <option selected>
+                    <select defaultValue="" 
+                            className="form-select" 
+                            style={{backgroundColor: "var(--primary-500)", color: "var(--text-100)", border: "none"}} 
+                            aria-label='Select an account'
+                            onChange={(e) => setSelectedAccount(e.target.value)}
+                    >
+                        <option value="">
                             Choose an account
                         </option>
                         {accounts.map((account) => (

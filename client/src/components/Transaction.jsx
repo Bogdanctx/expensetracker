@@ -12,6 +12,8 @@ const Transaction = ({ transaction }) => {
     var month = months[date.getMonth()];
     var year = date.getFullYear();
 
+    console.log(transaction);
+
     const deleteTransaction = async() => {
         try {
             await axios.delete(`http://localhost:8080/api/transactions/delete/${transaction.id}`);
@@ -41,15 +43,20 @@ const Transaction = ({ transaction }) => {
                 </div>
             </div>
             {transaction.description.length > 0 && (
-                <p style={{ color: "var(--accent-300)", marginBottom: "5px" }}>
+                <p className={`${styles.transaction_data}`}>
                     <i className={`bi bi-info-circle`} style={{ color: "var(--secondary-200)" }} /> {transaction.description}
                 </p>
             )}
-            <p style={{ color: "#93C5FD" }}>
-                Amount: <span style={{ color: "#10B981" }}>${transaction.amount}</span>
+            <p className={`${styles.transaction_data}`}>
+                <i className={`bi bi-cash-coin`} /> <span style={{ color: "#10B981" }}>${transaction.amount}</span>
             </p>
-            <p style={{ color: "#9CA3AF", justifySelf: "baseline" }}>
-                Added on: {day} {month} {year}
+            {transaction.account != null && (
+                <p className={`${styles.transaction_data}`}>
+                    <i className={`bi bi-piggy-bank`} style={{ color: "var(--secondary-200)" }} /> {transaction.account.name}
+                </p>
+            )}
+            <p style={{ color: "#9CA3AF", justifySelf: "baseline", marginTop: "20px" }}>
+                <i className={`bi bi-calendar-plus`} /> {day} {month} {year}
             </p>
         </div>
     )

@@ -22,3 +22,9 @@
     border-radius: 4px;
     margin-right: 12px;
 }
+
+.transaction_data {
+    color: var(--accent-300); 
+    margin: 0px;
+    margin-top: 5px;
+}
