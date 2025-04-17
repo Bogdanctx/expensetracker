@@ -12,8 +12,6 @@ const Transaction = ({ transaction }) => {
     var month = months[date.getMonth()];
     var year = date.getFullYear();
 
-    console.log(transaction);
-
     const deleteTransaction = async() => {
         try {
             await axios.delete(`http://localhost:8080/api/transactions/delete/${transaction.id}`);

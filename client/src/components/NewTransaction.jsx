@@ -28,21 +28,22 @@ const NewAccount = ({ setDisplayNewTransactionCard, accounts }) => {
             return;
         }
 
-        const account_id = accounts.find((account) => account.id == selectedAccount);
-        
+
+        const acc = accounts.find((account) => account.id == selectedAccount);
+
         const newTransaction = {
             title: transactionTitle,
             amount: parseFloat(amount),
             description: description,
             added: new Date().toISOString(),
-            account_id: account_id
+            account: acc
         };
 
         try {
             await axios.post('http://localhost:8080/api/transactions/create', newTransaction);
             setDisplayNewTransactionCard(false);
 
-            window.location.reload();
+            // window.location.reload();
         } catch (error) {
             setShowError(true);
 

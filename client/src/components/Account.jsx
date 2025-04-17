@@ -4,7 +4,7 @@ import '../assets/bootstrap-icons-1.11.3/font/bootstrap-icons.min.css'
 import '../palette.css'
 import styles from './Account.module.css';
 
-const Account = ({ account, setSelectedAccount }) => {
+const Account = ({ account, setSelectedAccount, transactions }) => {
     var date = new Date(account.created);
     var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
@@ -50,7 +50,7 @@ const Account = ({ account, setSelectedAccount }) => {
                 </div>
             </div>
             <p className={`card-text`} style={{ color: "#93C5FD" }}>
-                Balance: <span style={{ color: "#10B981" }}>${account.balance}</span>
+                <i className={`bi bi-piggy-bank-fill`}></i> <span style={{ color: "#10B981" }}>${account.balance}</span>
             </p>
             <p className={`card-text`} style={{ color: "#9CA3AF" }}>
                 Created on: {day} {month} {year}

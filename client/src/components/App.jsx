@@ -53,9 +53,9 @@ function App() {
                             {displayNewAccountCard && (
                                 <NewAccount setDisplayNewAccountCard={setDisplayNewAccountCard} />
                             )}
-
                             {accounts.map((account) => (
-                                <Account key={account.id} account={account} setSelectedAccount={setSelectedAccount} />
+                                <Account key={account.id} account={account} setSelectedAccount={setSelectedAccount} 
+                                        transactions={transactions.filter((t) => t.account && t.account.id == account.id)} />
                             ))}
                         </div>
                     </div>
