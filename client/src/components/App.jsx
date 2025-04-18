@@ -66,7 +66,9 @@ function App() {
                 </div>
                 
                     {selectedAccount && (
-                        <ExpandedAccountView account={selectedAccount} setSelectedAccount={setSelectedAccount} />
+                        <ExpandedAccountView account={selectedAccount} setSelectedAccount={setSelectedAccount} 
+                                                transactions={transactions.filter((t) => t.account && t.account.id == selectedAccount.id)}
+                        />
                     )}
             </div>
         </div>

@@ -1,8 +1,9 @@
 import { useState } from "react";
 import axios from "axios";
 import styles from './ExpandedAccountView.module.css';
+import AccountTransactionView from './AccountTransactionView';
 
-const ExpandedAccountView = ({ account, setSelectedAccount }) => {
+const ExpandedAccountView = ({ account, setSelectedAccount, transactions }) => {
     const [activeTab, setActiveTab] = useState("statistics");
     const [editingAccount, setEditingAccount] = useState(false);
     const [accountName, setAccountName] = useState(account.name);
@@ -167,6 +168,10 @@ const ExpandedAccountView = ({ account, setSelectedAccount }) => {
             {activeTab === "transactions" && (
                 <div>
                     <h4>💳 Transactions</h4>
+                    {transactions.map((t) => (
+                        <AccountTransactionView key={t.id} transaction={t} />
+                        )
+                    )}
                     <p>Coming soon: list of all transactions related to this account.</p>
               </div>
             )}
