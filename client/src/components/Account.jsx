@@ -54,7 +54,7 @@ const Account = ({ account, setSelectedAccount }) => {
             <p className={`card-text`} style={{ color: "#93C5FD" }}>
                 <i className={`bi bi-piggy-bank-fill`} /> 
                 <span style={{ color: "#10B981", marginLeft: "5px" }}>
-                    ${account.balance} <span style={{ color: "#9CA3AF" }}> (${account.initial_balance}) </span>
+                    ${account.balance} <span style={{ color: "#9CA3AF" }}> (${account.initialBalance}) </span>
                 </span>
             </p>
             <p className={`card-text`} style={{ color: "#9CA3AF" }}>

@@ -30,7 +30,7 @@ const NewAccount = ({ setDisplayNewAccountCard }) => {
         const newAccount = {
             name: accountName,
             balance: parseFloat(balance),
-            initial_balance: parseFloat(balance),
+            initialBalance: parseFloat(balance),
             created: new Date().toISOString()
         };
 
