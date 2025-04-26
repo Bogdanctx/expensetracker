@@ -10,10 +10,9 @@ import account_styles from './NewAccount.module.css';
 const NewAccount = ({ setDisplayNewTransactionCard, accounts }) => {
     const [transactionTitle, setTransactionTitle] = useState('');
     const [description, setDescription] = useState('');
-    const [selectedAccount, setSelectedAccount] = useState('');
+    const [selectedAccount, setSelectedAccount] = useState('None');
     const [amount, setAmount] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
-    const [showError, setShowError] = useState(false);
 
     const handleAmountChange = (e) => {
         const value = e.target.value;
@@ -23,11 +22,14 @@ const NewAccount = ({ setDisplayNewTransactionCard, accounts }) => {
     };
 
     const handleCreate = async () => {
-        if (!transactionTitle || !amount) {
-            alert('Please fill in all fields');
+        if(!transactionTitle) {
+            setErrorMessage('Please enter the title for this transaction.');
             return;
         }
-
+        if (!amount) {
+            setErrorMessage('Please enter the amount of this transaction.');
+            return;
+        }
 
         const acc = accounts.find((account) => account.id == selectedAccount);
 
@@ -43,10 +45,8 @@ const NewAccount = ({ setDisplayNewTransactionCard, accounts }) => {
             await axios.post('http://localhost:8080/api/transactions/create', newTransaction);
             setDisplayNewTransactionCard(false);
 
-            // window.location.reload();
+            window.location.reload();
         } catch (error) {
-            setShowError(true);
-
             if(error.response) {
                 setErrorMessage(error.response.data.toUpperCase());
             }
@@ -102,7 +102,7 @@ const NewAccount = ({ setDisplayNewTransactionCard, accounts }) => {
                             onChange={(e) => setSelectedAccount(e.target.value)}
                     >
                         <option value="">
-                            Choose an account
+                            Choose an account (None)
                         </option>
                         {accounts.map((account) => (
                             <option key={account.id} value={account.id}>
@@ -123,7 +123,7 @@ const NewAccount = ({ setDisplayNewTransactionCard, accounts }) => {
                 </button>
             </div>
 
-            {showError && (
+            {errorMessage != '' && (
                 <h4 className={`${account_styles.new_account_error}`}>[ERROR] {errorMessage}</h4>
             )}
         </div>

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import styles from './ExpandedAccountView.module.css';
 import AccountTransactionView from './AccountTransactionView';
@@ -10,6 +10,7 @@ const ExpandedAccountView = ({ account, setSelectedAccount, transactions }) => {
     const [accountBalance, setAccountBalance] = useState(account.balance);
     const [funds, setFunds] = useState(0);
     const [showFundsInput, setShowFundsInput] = useState(false);
+    const [shouldReload, setShouldReload] = useState(false);
     
     var date = new Date(account.created);
     var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
@@ -25,6 +26,14 @@ const ExpandedAccountView = ({ account, setSelectedAccount, transactions }) => {
             
         } catch (error) {
             console.error(error);
+        }
+    }
+
+    const closeAccount = () => {
+        setSelectedAccount(null);
+        if(shouldReload) {
+            window.location.reload();
+            setShouldReload(false);
         }
     }
 
@@ -72,7 +81,10 @@ const ExpandedAccountView = ({ account, setSelectedAccount, transactions }) => {
                     </button>
                 )}
 
-                <button type="button" className={`btn ${styles.action_button}`} onClick={() => setSelectedAccount(null)}>
+                { 
+                    // close button
+                }
+                <button type="button" className={`btn ${styles.action_button}`} onClick={closeAccount}>
                     <i className="bi bi-x-lg"></i>
                 </button>
             </div>
@@ -169,10 +181,9 @@ const ExpandedAccountView = ({ account, setSelectedAccount, transactions }) => {
                 <div>
                     <h4>💳 Transactions</h4>
                     {transactions.map((t) => (
-                        <AccountTransactionView key={t.id} transaction={t} />
+                        <AccountTransactionView key={t.id} transaction={t} setShouldReload={setShouldReload}/>
                         )
                     )}
-                    <p>Coming soon: list of all transactions related to this account.</p>
               </div>
             )}
         </div>

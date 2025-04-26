@@ -4,13 +4,15 @@ import '../assets/bootstrap-icons-1.11.3/font/bootstrap-icons.min.css'
 import '../palette.css'
 import styles from './Account.module.css';
 
-const Account = ({ account, setSelectedAccount, transactions }) => {
+const Account = ({ account, setSelectedAccount }) => {
     var date = new Date(account.created);
     var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
     var day = date.getDate(); // Use `getDate()` instead of `getDay()` for day of the month
     var month = months[date.getMonth()];
     var year = date.getFullYear();
+
+    console.log(account);
 
     const deleteAccount = async() => {
         try {
@@ -50,7 +52,10 @@ const Account = ({ account, setSelectedAccount, transactions }) => {
                 </div>
             </div>
             <p className={`card-text`} style={{ color: "#93C5FD" }}>
-                <i className={`bi bi-piggy-bank-fill`}></i> <span style={{ color: "#10B981" }}>${account.balance}</span>
+                <i className={`bi bi-piggy-bank-fill`} /> 
+                <span style={{ color: "#10B981", marginLeft: "5px" }}>
+                    ${account.balance} <span style={{ color: "#9CA3AF" }}> (${account.initial_balance}) </span>
+                </span>
             </p>
             <p className={`card-text`} style={{ color: "#9CA3AF" }}>
                 Created on: {day} {month} {year}

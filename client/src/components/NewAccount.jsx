@@ -9,7 +9,6 @@ const NewAccount = ({ setDisplayNewAccountCard }) => {
     const [accountName, setAccountName] = useState('');
     const [balance, setBalance] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
-    const [showError, setShowError] = useState(false);
 
     const handleBalanceChange = (e) => {
         const value = e.target.value;
@@ -19,14 +18,19 @@ const NewAccount = ({ setDisplayNewAccountCard }) => {
     };
 
     const handleCreate = async () => {
-        if (!accountName || !balance) {
-            alert('Please fill in all fields');
+        if(!accountName) {
+            setErrorMessage('Please enter the account\'s name.');
+            return;
+        }
+        if(!balance) {
+            setErrorMessage('Please enter the account\'s balance.');
             return;
         }
 
         const newAccount = {
             name: accountName,
             balance: parseFloat(balance),
+            initial_balance: parseFloat(balance),
             created: new Date().toISOString()
         };
 
@@ -36,8 +40,6 @@ const NewAccount = ({ setDisplayNewAccountCard }) => {
 
             window.location.reload();
         } catch (error) {
-            setShowError(true);
-
             if(error.response) {
                 setErrorMessage(error.response.data.toUpperCase());
             }
@@ -88,7 +90,7 @@ const NewAccount = ({ setDisplayNewAccountCard }) => {
                 </button>
             </div>
 
-            {showError && (
+            {errorMessage != '' && (
                 <h4 className={`${styles.new_account_error}`} id="new_account_error">[ERROR] {errorMessage}</h4>
             )}
         </div>

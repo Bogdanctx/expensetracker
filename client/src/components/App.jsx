@@ -25,8 +25,7 @@ function App() {
         
         fetchData(setAccounts, "http://localhost:8080/api/accounts");
         fetchData(setTransactions, "http://localhost:8080/api/transactions");
-      }, []);
-    
+    }, []);
 
     return (
         <div style={{ display: "flex" }}>
