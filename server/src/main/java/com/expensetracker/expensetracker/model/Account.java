@@ -46,6 +46,10 @@ public class Account {
         this.balance = newBalance;
     }
 
+    public void setInitialBalance(double newInitialBalance) {
+        this.initialBalance = newInitialBalance;
+    }
+
     public double getBalance() {
         return balance;
     }

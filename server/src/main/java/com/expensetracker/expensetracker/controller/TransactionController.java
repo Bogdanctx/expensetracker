@@ -17,35 +17,11 @@ import java.util.Optional;
 @CrossOrigin(origins = "http://localhost:5173")
 public class TransactionController {
     private final TransactionRepository transactionRepository;
+    private final AccountRepository accountRepository;
 
     public TransactionController(TransactionRepository transactionRepository, AccountRepository accountRepository) {
         this.transactionRepository = transactionRepository;
-
-        /*Account account = accountRepository.findByName("sanatate")
-                .orElseThrow(() -> new RuntimeException("Account not found"));
-
-        transactionRepository.save(
-                new Transaction(51, "KFC", "am cumparat kfc pe 13.04.2025]", LocalDate.of(2025, 4, 14), account)
-        );
-        transactionRepository.save(
-                new Transaction(41, "Factura curent", "am platit factura la curent pe 13.04.2025", LocalDate.of(2025, 4, 14), account)
-        );
-        transactionRepository.save(
-                new Transaction(41, "Factura curent", "am platit factura la curent pe 13.04.2025", LocalDate.of(2025, 4, 14), account)
-        );
-        transactionRepository.save(
-                new Transaction(41, "Factura curent", "am platit factura la curent pe 13.04.2025", LocalDate.of(2025, 4, 14), account)
-        );
-        transactionRepository.save(
-                new Transaction(41, "Factura curent", "am platit factura la curent pe 13.04.2025", LocalDate.of(2025, 4, 14), account)
-        );
-        transactionRepository.save(
-                new Transaction(41, "Factura curent", "am platit factura la curent pe 13.04.2025", LocalDate.of(2025, 4, 14), account)
-        );
-        transactionRepository.save(
-                new Transaction(41, "Factura curent", "am platit factura la curent pe 13.04.2025", LocalDate.of(2025, 4, 14), account)
-        );
-*/
+        this.accountRepository = accountRepository;
     }
 
     @GetMapping("/test")
@@ -62,6 +38,14 @@ public class TransactionController {
     public ResponseEntity<?> createTransaction(@RequestBody Transaction transaction) {
         try {
             transactionRepository.save(transaction);
+
+            Account account = transaction.getAccount();
+
+            if(account != null) {
+                account.setBalance(account.getBalance() - transaction.getAmount());
+                accountRepository.save(account);
+            }
+
         } catch(Exception e) {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
         }
@@ -73,6 +57,14 @@ public class TransactionController {
     public ResponseEntity<?> deleteTransaction(@PathVariable Long id) {
         if (!transactionRepository.existsById(id)) {
             return ResponseEntity.notFound().build();
+        }
+
+        Transaction transaction = transactionRepository.findById(id).get();
+        Account account = transaction.getAccount();
+
+        if(account != null) {
+            account.setBalance(account.getBalance() + transaction.getAmount());
+            accountRepository.save(account);
         }
 
         transactionRepository.deleteById(id);

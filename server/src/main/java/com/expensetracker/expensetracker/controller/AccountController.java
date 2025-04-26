@@ -55,6 +55,8 @@ public class AccountController {
                         .body("An account with this name already exists");
         }
 
+        System.out.println(account);
+
         repository.save(account);
 
         return ResponseEntity.ok().build();

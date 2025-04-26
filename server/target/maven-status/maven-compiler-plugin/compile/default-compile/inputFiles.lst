@@ -1,8 +1,8 @@
-D:\expensetracker\server\src\main\java\com\expensetracker\expensetracker\controller\AccountController.java
-D:\expensetracker\server\src\main\java\com\expensetracker\expensetracker\controller\TransactionController.java
-D:\expensetracker\server\src\main\java\com\expensetracker\expensetracker\exception\AccountNotFoundException.java
-D:\expensetracker\server\src\main\java\com\expensetracker\expensetracker\ExpenseTrackerApplication.java
-D:\expensetracker\server\src\main\java\com\expensetracker\expensetracker\model\Account.java
-D:\expensetracker\server\src\main\java\com\expensetracker\expensetracker\model\Transaction.java
-D:\expensetracker\server\src\main\java\com\expensetracker\expensetracker\repository\AccountRepository.java
-D:\expensetracker\server\src\main\java\com\expensetracker\expensetracker\repository\TransactionRepository.java
+D:\expense-tracker\server\src\main\java\com\expensetracker\expensetracker\controller\AccountController.java
+D:\expense-tracker\server\src\main\java\com\expensetracker\expensetracker\controller\TransactionController.java
+D:\expense-tracker\server\src\main\java\com\expensetracker\expensetracker\exception\AccountNotFoundException.java
+D:\expense-tracker\server\src\main\java\com\expensetracker\expensetracker\ExpenseTrackerApplication.java
+D:\expense-tracker\server\src\main\java\com\expensetracker\expensetracker\model\Account.java
+D:\expense-tracker\server\src\main\java\com\expensetracker\expensetracker\model\Transaction.java
+D:\expense-tracker\server\src\main\java\com\expensetracker\expensetracker\repository\AccountRepository.java
+D:\expense-tracker\server\src\main\java\com\expensetracker\expensetracker\repository\TransactionRepository.java
