@@ -7,7 +7,6 @@ const ExpandedAccountView = ({ account, setSelectedAccount, transactions }) => {
     const [activeTab, setActiveTab] = useState("statistics");
     const [editingAccount, setEditingAccount] = useState(false);
     const [accountName, setAccountName] = useState(account.name);
-    const [accountBalance, setAccountBalance] = useState(account.balance);
     const [funds, setFunds] = useState(0);
     const [showFundsInput, setShowFundsInput] = useState(false);
     const [shouldReload, setShouldReload] = useState(false);
@@ -91,7 +90,7 @@ const ExpandedAccountView = ({ account, setSelectedAccount, transactions }) => {
         </div>
 
         <div style={{ display: "flex" }}>
-            <p className={`d-flex align-items-center ${styles.account_stats}`}>💵 Balance: ${accountBalance}</p>
+            <p className={`d-flex align-items-center ${styles.account_stats}`}>💵 Balance: ${account.balance}</p>
             { !showFundsInput && (
                 <button 
                         type="button" 
@@ -101,7 +100,7 @@ const ExpandedAccountView = ({ account, setSelectedAccount, transactions }) => {
                             setShowFundsInput(true);
                         }}
                     >
-                        <i className="bi bi-cash-coin" style={{ verticalAlign: "middle", margin: "6px" }}></i>
+                        <i className="bi bi-cash-coin" style={{ verticalAlign: "middle", margin: "6px" }} />
                         Add funds
                 </button>
             )}
@@ -110,8 +109,8 @@ const ExpandedAccountView = ({ account, setSelectedAccount, transactions }) => {
             <p className={`d-flex align-items-center ${styles.account_stats}`}>💰 Add funds: $
                 <input type="text" className={`form-control ${styles.add_funds_input}`} id="add_funds_input" 
                         onChange={(e) => {
-                            const value = e.target.value;
-                            if (value === '' || /^[0-9]*\.?[0-9]*$/.test(value)) {
+                            const value = parseFloat(e.target.value);
+                            if (value === '' || /^[0-9-]*\.?[0-9-]*$/.test(value)) {
                                 setFunds(value);                
                             }
                         }} 
@@ -122,12 +121,9 @@ const ExpandedAccountView = ({ account, setSelectedAccount, transactions }) => {
                         className={`btn ${styles.add_funds_button}`} 
                         id="add_funds_button" 
                         style={{ marginRight: "10px" }} 
-                        onClick={() => {
-                            const newBalance = parseFloat(accountBalance) + parseFloat(funds);
-                            setAccountBalance(newBalance);                            
+                        onClick={() => {                         
                             setShowFundsInput(false);
-                            account.balance = newBalance;
-
+                            account.balance += parseFloat(funds);
                             saveAccountSettings();
                         }}
                     >
@@ -181,9 +177,8 @@ const ExpandedAccountView = ({ account, setSelectedAccount, transactions }) => {
                 <div>
                     <h4>💳 Transactions</h4>
                     {transactions.map((t) => (
-                        <AccountTransactionView key={t.id} transaction={t} setShouldReload={setShouldReload}/>
-                        )
-                    )}
+                        <AccountTransactionView key={t.id} transaction={t} setShouldReload={setShouldReload} />
+                    ))}
               </div>
             )}
         </div>

@@ -12,8 +12,6 @@ const Account = ({ account, setSelectedAccount }) => {
     var month = months[date.getMonth()];
     var year = date.getFullYear();
 
-    console.log(account);
-
     const deleteAccount = async() => {
         try {
             await axios.delete(`http://localhost:8080/api/accounts/delete/${account.id}`);
@@ -54,7 +52,7 @@ const Account = ({ account, setSelectedAccount }) => {
             <p className={`card-text`} style={{ color: "#93C5FD" }}>
                 <i className={`bi bi-piggy-bank-fill`} /> 
                 <span style={{ color: "#10B981", marginLeft: "5px" }}>
-                    ${account.balance} <span style={{ color: "#9CA3AF" }}> (${account.initialBalance}) </span>
+                    ${account.balance} { /* <span style={{ color: "#9CA3AF" }}> (${account.initialBalance}) </span> */ }
                 </span>
             </p>
             <p className={`card-text`} style={{ color: "#9CA3AF" }}>
