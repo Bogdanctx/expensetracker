@@ -17,6 +17,17 @@ public class Transaction {
     private String description;
     private LocalDate added;
 
+    public enum TYPES {
+        Groceries,
+        Dining,
+        Transportation,
+        Utilities,
+        Entertainment,
+        Healthcare,
+        Shopping,
+        Other
+    }
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     @JoinColumn(name = "account_id")
