@@ -1,5 +1,6 @@
 package com.expensetracker.expensetracker.controller;
 
+import com.expensetracker.expensetracker.ai.NaiveBayesClassifier;
 import com.expensetracker.expensetracker.model.Account;
 import com.expensetracker.expensetracker.model.Transaction;
 import com.expensetracker.expensetracker.repository.AccountRepository;
@@ -14,7 +15,6 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/transactions")
-@CrossOrigin(origins = "http://localhost:5173")
 public class TransactionController {
     private final TransactionRepository transactionRepository;
     private final AccountRepository accountRepository;
@@ -37,6 +37,13 @@ public class TransactionController {
     @PostMapping("/create")
     public ResponseEntity<?> createTransaction(@RequestBody Transaction transaction) {
         try {
+            String regex = "[,./;'\\[\\]=\\-!@#$%\\^&\\*()_+{}|\\\\\":?><]";
+            String title = transaction.getTitle();
+            String description = transaction.getDescription();
+
+            Transaction.TYPES type = NaiveBayesClassifier.classify(title + ' ' + description);
+            transaction.setType(type);
+
             transactionRepository.save(transaction);
 
             Account account = transaction.getAccount();
@@ -50,6 +57,17 @@ public class TransactionController {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
         }
         
+        return ResponseEntity.ok().build();
+    }
+
+    @PutMapping("/update/{id}")
+    public ResponseEntity<?> updateTransaction(@PathVariable Long id, @RequestBody Transaction transaction) {
+        Optional<Transaction> existingTransaction = transactionRepository.findById(id);
+        Transaction t = existingTransaction.get();
+
+        t.setType(transaction.getType());
+        transactionRepository.save(t);
+
         return ResponseEntity.ok().build();
     }
 

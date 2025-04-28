@@ -4,30 +4,41 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="df3e220b-0805-4eca-b674-1d8bd584c04e" name="Changes" comment="">
+    <list default="true" id="df3e220b-0805-4eca-b674-1d8bd584c04e" name="Changes" comment="Created Naive Bayes to classify transaction types&#10;Added a dataset with 5000 samples">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/expensetracker/expensetracker/config/CorsConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../client/src/components/Account.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/components/Account.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/src/components/NewAccount.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/components/NewAccount.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/src/components/AccountTransactionView.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/components/AccountTransactionView.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/src/components/AccountTransactionView.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/components/AccountTransactionView.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/src/components/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/components/App.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/src/components/ExpandedAccountView.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/components/ExpandedAccountView.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/src/components/Transaction.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/components/Transaction.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/src/components/Transaction.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/components/Transaction.module.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sqldialects.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvnw" beforeDir="false" afterPath="$PROJECT_DIR$/mvnw" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/expensetracker/expensetracker/ai/Tokenizer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/expensetracker/expensetracker/ai/Tokenizer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/expensetracker/expensetracker/controller/AccountController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/expensetracker/expensetracker/controller/AccountController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/expensetracker/expensetracker/controller/TransactionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/expensetracker/expensetracker/controller/TransactionController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/expensetracker/expensetracker/model/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/expensetracker/expensetracker/model/Account.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/expensetracker/expensetracker/model/Transaction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/expensetracker/expensetracker/model/Transaction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/expensetracker/expensetracker/ai/Tokenizer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/expensetracker/expensetracker/ai/Tokenizer.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/expensetracker/expensetracker/controller/AccountController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/expensetracker/expensetracker/controller/AccountController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/expensetracker/expensetracker/controller/TransactionController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/expensetracker/expensetracker/controller/TransactionController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/expensetracker/expensetracker/model/Account.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/expensetracker/expensetracker/model/Account.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/expensetracker/expensetracker/model/Transaction$TYPES.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/expensetracker/expensetracker/model/Transaction$TYPES.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/expensetracker/expensetracker/model/Transaction.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/expensetracker/expensetracker/model/Transaction.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
@@ -40,34 +51,42 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.Run ExpenseTrackerApplication.executor": "Run",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "Spring Boot.ExpenseTrackerApplication.executor": "Run",
-    "git-widget-placeholder": "main",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "SDKs",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.15989847",
-    "settings.editor.selected.configurable": "preferences.lookFeel",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.Run ExpenseTrackerApplication.executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;Spring Boot.ExpenseTrackerApplication.executor&quot;: &quot;Run&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;SDKs&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.15989847&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.completion&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
-  <component name="RunManager">
+}</component>
+  <component name="RunManager" selected="Application.Run ExpenseTrackerApplication">
     <configuration name="Run ExpenseTrackerApplication" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="com.expensetracker.expensetracker.ExpenseTrackerApplication" />
       <module name="expensetracker" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ExpenseTrackerApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
+      <module name="expensetracker" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.expensetracker.expensetracker.ExpenseTrackerApplication" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -89,12 +108,37 @@
       <option name="presentableId" value="Default" />
       <updated>1745681817414</updated>
       <workItem from="1745681818540" duration="152000" />
-      <workItem from="1745696413281" duration="1777000" />
+      <workItem from="1745696413281" duration="2203000" />
+      <workItem from="1745769123419" duration="11780000" />
+      <workItem from="1745782397559" duration="7212000" />
+      <workItem from="1745819788795" duration="7062000" />
     </task>
+    <task id="LOCAL-00001" summary="Accept negative values for funds&#10;Deleted initialBalance text">
+      <option name="closed" value="true" />
+      <created>1745789771473</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1745789771473</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Created Naive Bayes to classify transaction types&#10;Added a dataset with 5000 samples">
+      <option name="closed" value="true" />
+      <created>1745790332740</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1745790332740</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Accept negative values for funds&#10;Deleted initialBalance text" />
+    <MESSAGE value="Created Naive Bayes to classify transaction types&#10;Added a dataset with 5000 samples" />
+    <option name="LAST_COMMIT_MESSAGE" value="Created Naive Bayes to classify transaction types&#10;Added a dataset with 5000 samples" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

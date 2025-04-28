@@ -16,6 +16,7 @@ public class Transaction {
     private String title;
     private String description;
     private LocalDate added;
+    private TYPES type;
 
     public enum TYPES {
         Groceries,
@@ -41,6 +42,14 @@ public class Transaction {
         this.description = description;
         this.added = added;
         this.account = account;
+    }
+
+    public TYPES getType() {
+        return type;
+    }
+
+    public void setType(TYPES type) {
+        this.type = type;
     }
 
     public Long getId() {

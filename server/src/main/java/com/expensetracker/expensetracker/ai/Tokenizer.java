@@ -5,7 +5,9 @@ import java.util.List;
 
 public class Tokenizer {
     public static List<String> tokenize(String input) {
+        String regex = "[,./;'\\[\\]=\\-!@#$%\\^&\\*()_+{}|\\\\\":?><]";
         List<String> tokens = new ArrayList<>();
+        input = input.replaceAll(regex, "");
 
         String[] words = input.toLowerCase().split("\\W+");
 
