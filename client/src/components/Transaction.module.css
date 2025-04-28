@@ -28,3 +28,29 @@
     margin: 0px;
     margin-top: 5px;
 }
+
+.transaction_type {
+    font-size: 15px;
+    margin-left: 0.5rem;
+    position: relative;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.transaction_type:hover {
+    background-color: var(--background-800);
+    border-radius: 50px;
+}
+
+.select_transaction {
+    font-size: 12px;
+    border-radius: 4px;
+    padding: 2px;
+    background-color: var(--background-800);
+    color: white;
+    font-family: "Righteous", sans-serif;
+}
+
+.transaction_option {
+    font-family: "Righteous", sans-serif;
+}

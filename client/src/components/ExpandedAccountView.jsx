@@ -1,9 +1,9 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import axios from "axios";
 import styles from './ExpandedAccountView.module.css';
 import AccountTransactionView from './AccountTransactionView';
 
-const ExpandedAccountView = ({ account, setSelectedAccount, transactions }) => {
+const ExpandedAccountView = ({ account, setSelectedAccount, transactions, onDelete }) => {
     const [activeTab, setActiveTab] = useState("statistics");
     const [editingAccount, setEditingAccount] = useState(false);
     const [accountName, setAccountName] = useState(account.name);
@@ -177,7 +177,7 @@ const ExpandedAccountView = ({ account, setSelectedAccount, transactions }) => {
                 <div>
                     <h4>💳 Transactions</h4>
                     {transactions.map((t) => (
-                        <AccountTransactionView key={t.id} transaction={t} setShouldReload={setShouldReload} />
+                        <AccountTransactionView key={t.id} transaction={t} setShouldReload={setShouldReload} onDelete={onDelete} />
                     ))}
               </div>
             )}

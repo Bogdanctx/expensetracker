@@ -25,7 +25,9 @@
 .transactionTitle {
     font-size: 1.25rem;
     color: var(--text-100);
+    margin: 0;
     margin-top: 0.5rem;
+    vertical-align: middle;
 }
 
 .transactionDate {

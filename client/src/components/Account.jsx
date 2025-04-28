@@ -4,23 +4,13 @@ import '../assets/bootstrap-icons-1.11.3/font/bootstrap-icons.min.css'
 import '../palette.css'
 import styles from './Account.module.css';
 
-const Account = ({ account, setSelectedAccount }) => {
+const Account = ({ account, setSelectedAccount, onDelete }) => {
     var date = new Date(account.created);
     var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
     var day = date.getDate(); // Use `getDate()` instead of `getDay()` for day of the month
     var month = months[date.getMonth()];
     var year = date.getFullYear();
-
-    const deleteAccount = async() => {
-        try {
-            await axios.delete(`http://localhost:8080/api/accounts/delete/${account.id}`);
-
-            window.location.reload();
-        } catch (error) {
-            console.error(error);
-        }
-    }
 
     return (
         <div className={`${styles.card}`} >
@@ -43,7 +33,7 @@ const Account = ({ account, setSelectedAccount }) => {
                         type="button"
                         className={`btn p-2 d-flex align-items-center justify-content-center ${styles.card_button}`}
                         aria-label="Close"
-                        onClick={deleteAccount}
+                        onClick={() => onDelete(account.id)}
                     >
                         <i className="bi bi-x-lg"></i>
                     </button>

@@ -3,8 +3,9 @@ import '../assets/bootstrap-5.0.2-dist/css/bootstrap.min.css';
 import '../assets/bootstrap-icons-1.11.3/font/bootstrap-icons.min.css'
 import '../palette.css'
 import styles from './Transaction.module.css';
+import { useState } from 'react';
 
-const Transaction = ({ transaction }) => {
+const Transaction = ({ transaction, onDelete }) => {
     var date = new Date(transaction.added);
     var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
@@ -12,21 +13,54 @@ const Transaction = ({ transaction }) => {
     var month = months[date.getMonth()];
     var year = date.getFullYear();
 
-    const deleteTransaction = async() => {
-        try {
-            await axios.delete(`http://localhost:8080/api/transactions/delete/${transaction.id}`);
+    const [isEditingType, setIsEditingType] = useState(false);
+    const [currentType, setCurrentType] = useState(transaction.type);
+    const transactionTypes = ["Groceries", "Dining", "Transportation", "Utilities", "Entertainment", "Healthcare", "Shopping", "Other"];
 
-            window.location.reload();
+    const updateTransactionType = async (newType) => {
+        try {
+            await axios.put(`http://localhost:8080/api/transactions/update/${transaction.id}`, {
+                type: newType
+            });
         } catch (error) {
-            console.error(error);
+            console.error("Error updating transaction type:", error);
         }
-    }
+    };
+
+    const handleTypeChange = (e) => {
+        const selectedType = e.target.value;
+        setCurrentType(selectedType);
+        setIsEditingType(false);
+        updateTransactionType(selectedType);
+    };
 
     return (
         <div className={`${styles.transaction_card}`} >
             <div className={`d-flex justify-content-between`}>
                 <h5 className={`${styles.card_title}`} style={{ color: "var(--text-50)" }}> 
                     {transaction.title}
+                    <br />
+                    <span className={styles.transaction_type}
+                        onClick={() => setIsEditingType(true)}
+                    >
+                        {isEditingType ? (
+                            <select
+                                value={currentType}
+                                onChange={handleTypeChange}
+                                onBlur={() => setIsEditingType(false)}
+                                autoFocus
+                                className={styles.select_transaction}
+                            >
+                                {transactionTypes.map((type) => (
+                                    <option className={styles.transaction_option} key={type} value={type}>{type}</option>
+                                ))}
+                            </select>
+                        ) : (
+                            <>
+                                <i className="bi bi-tag" /> {currentType}
+                            </>
+                        )}
+                    </span>
                 </h5>
 
                 <div className="d-flex">
@@ -34,7 +68,7 @@ const Transaction = ({ transaction }) => {
                         type="button"
                         className={`btn p-2 d-flex align-items-center justify-content-center ${styles.card_button}`}
                         aria-label="Close"
-                        onClick={deleteTransaction}
+                        onClick={() => onDelete(transaction.id)}
                     >
                         <i className="bi bi-x-lg"></i>
                     </button>
@@ -50,7 +84,7 @@ const Transaction = ({ transaction }) => {
             </p>
             {transaction.account != null && (
                 <p className={`${styles.transaction_data}`}>
-                    <i className={`bi bi-piggy-bank`} style={{ color: "var(--secondary-200)" }} /> {transaction.account.name}
+                    <i className={`bi bi-bank`} style={{ color: "var(--secondary-200)" }} /> {transaction.account.name}
                 </p>
             )}
             <p style={{ color: "#9CA3AF", justifySelf: "baseline", marginTop: "20px" }}>

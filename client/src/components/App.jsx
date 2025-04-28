@@ -27,6 +27,26 @@ function App() {
         fetchData(setTransactions, "http://localhost:8080/api/transactions");
     }, []);
 
+    const deleteTransaction = async (id) => {
+        try {
+            await axios.delete(`http://localhost:8080/api/transactions/delete/${id}`);
+        } catch (error) {
+            console.error(error);
+        }
+
+        setTransactions(prev => prev.filter(t => t.id !== id));
+    };
+
+    const deleteAccount = async (id) => {
+        try {
+            await axios.delete(`http://localhost:8080/api/accounts/delete/${id}`);
+        } catch (error) {
+            console.error(error);
+        }
+
+        setAccounts(prev => prev.filter(a => a.id !== id));
+    }
+
     return (
         <div style={{ display: "flex" }}>
             <Sidebar setDisplayNewAccountCard={setDisplayNewAccountCard} setDisplayNewTransactionCard={setDisplayNewTransactionCard} />
@@ -40,7 +60,7 @@ function App() {
                         )}
 
                         {transactions.map((transaction) => (
-                            <Transaction key = {transaction.id} transaction={transaction} />
+                            <Transaction key = {transaction.id} transaction={transaction} onDelete={deleteTransaction} />
                         ))}
                     </div>
                 </div>
@@ -54,7 +74,8 @@ function App() {
                             )}
                             {accounts.map((account) => (
                                 <Account key={account.id} account={account} setSelectedAccount={setSelectedAccount} 
-                                        transactions={transactions.filter((t) => t.account && t.account.id == account.id)} />
+                                        transactions={transactions.filter((t) => t.account && t.account.id == account.id)}
+                                        onDelete={deleteAccount} />
                             ))}
                         </div>
                     </div>
@@ -67,6 +88,7 @@ function App() {
                     {selectedAccount && (
                         <ExpandedAccountView account={selectedAccount} setSelectedAccount={setSelectedAccount} 
                                                 transactions={transactions.filter((t) => t.account && t.account.id == selectedAccount.id)}
+                                                onDelete={deleteTransaction}
                         />
                     )}
             </div>

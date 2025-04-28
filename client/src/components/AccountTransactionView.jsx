@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import styles from './AccountTransactionView.module.css';
 
-const AccountTransactionView = ({ transaction, setShouldReload }) => {
+const AccountTransactionView = ({ transaction, setShouldReload, onDelete }) => {
     const date = new Date(transaction.added);
     const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
@@ -34,25 +34,19 @@ const AccountTransactionView = ({ transaction, setShouldReload }) => {
         return () => clearInterval(timer);
     }, [transaction.amount]);
 
-    const deleteTransaction = async() => {
-        try {
-            await axios.delete(`http://localhost:8080/api/transactions/delete/${transaction.id}`);
-
-            setShouldReload(true);
-            setIsDeleted(true);
-        } catch (error) {
-            console.error(error);
-        }
-    }
-
     return (
         <div>
             {isDeleted == false && (
                 <div className={styles.transactionCard}>
                     <div className={styles.left}>
-                        <h5 className={styles.transactionTitle}>
-                            <i className="bi bi-caret-right-fill" /> {transaction.title}
-                        </h5>
+                        <div style = {{ alignItems: "center", marginBottom: "14px" }}>
+                            <h5 className={styles.transactionTitle}>
+                                <i className="bi bi-caret-right-fill" /> {transaction.title}
+                            </h5>
+                            <span style={{ fontSize: "13px", marginLeft: "1rem" }}>
+                                <i className="bi bi-tag" /> {transaction.type}
+                            </span>
+                        </div>
                         {transaction.description?.length > 0 && (
                             <p className={styles.transactionDescription}>
                                 <i className="bi bi-info-circle" style={{ color: "var(--secondary-200)", marginRight: '0.5rem' }} />
@@ -68,7 +62,7 @@ const AccountTransactionView = ({ transaction, setShouldReload }) => {
                         <span className={`${styles.transactionAmount} ${styles.positive}`}>
                             ${displayAmount.toFixed(2)}
                         </span>
-                        <button type="button" className={`${styles.transactionButton} ${styles.removeButton}`} onClick={() => deleteTransaction(transaction.id)}>
+                        <button type="button" className={`${styles.transactionButton} ${styles.removeButton}`} onClick={() => onDelete(transaction.id)}>
                             <i className="bi bi-trash" />
                         </button>
                     </div>
