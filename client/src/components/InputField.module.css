@@ -1,0 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
+
+.inputLabel {
+    font-size: 14px;
+    color: #93C5FD;
+    font-family: "Righteous", sans-serif;
+}
+
+.input {
+    background-color: var(--secondary-300);
+    color: var(--text-800);
+    font-size: 15px;
+    outline: none;
+    border-color: transparent;
+    height: 2rem;
+    font-family: "Righteous", sans-serif;
+}

@@ -4,15 +4,9 @@ import '../assets/bootstrap-icons-1.11.3/font/bootstrap-icons.min.css'
 import '../palette.css'
 import styles from './Transaction.module.css';
 import { useState } from 'react';
+import DateDisplay from './DateDisplay';
 
 const Transaction = ({ transaction, onDelete }) => {
-    var date = new Date(transaction.added);
-    var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-
-    var day = date.getDate(); // Use `getDate()` instead of `getDay()` for day of the month
-    var month = months[date.getMonth()];
-    var year = date.getFullYear();
-
     const [isEditingType, setIsEditingType] = useState(false);
     const [currentType, setCurrentType] = useState(transaction.type);
     const transactionTypes = ["Groceries", "Dining", "Transportation", "Utilities", "Entertainment", "Healthcare", "Shopping", "Other"];
@@ -87,9 +81,7 @@ const Transaction = ({ transaction, onDelete }) => {
                     <i className={`bi bi-bank`} style={{ color: "var(--secondary-200)" }} /> {transaction.account.name}
                 </p>
             )}
-            <p style={{ color: "#9CA3AF", justifySelf: "baseline", marginTop: "20px" }}>
-                <i className={`bi bi-calendar-plus`} /> {day} {month} {year}
-            </p>
+            <DateDisplay dateString={transaction.added} />
         </div>
     )
 }

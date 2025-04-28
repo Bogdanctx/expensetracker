@@ -6,6 +6,7 @@ import '../palette.css';
 import styles from './NewTransaction.module.css';
 import transaction_styles from './Transaction.module.css';
 import account_styles from './NewAccount.module.css';
+import InputField from './InputField';
 
 const NewAccount = ({ setDisplayNewTransactionCard, accounts }) => {
     const [transactionTitle, setTransactionTitle] = useState('');
@@ -60,39 +61,9 @@ const NewAccount = ({ setDisplayNewTransactionCard, accounts }) => {
     return (
         <div className={`${transaction_styles.transaction_card} ${styles.card}`} >
             <div className={`justify-content-between`}>
-                <label htmlFor="transaction_title" className={`${styles.label_transaction_title}`} id="label_transaction_title">Title</label>
-                <input
-                    type="text"
-                    className={`form-control ${styles.transaction_title} ${styles.input}`}
-                    id="transaction_title"
-                    placeholder="Enter a title"
-                    value={transactionTitle}
-                    onChange={(e) => setTransactionTitle(e.target.value)}
-                    required
-                />
-
-                <label htmlFor="transaction_description" className={`${styles.label_transaction_title}`}>Description</label>
-                <input
-                    type="text"
-                    className={`form-control ${styles.transaction_title} ${styles.input}`}
-                    id="transaction_description"
-                    placeholder="Enter a description"
-                    value={description}
-                    onChange={(e) => setDescription(e.target.value)}
-                    required
-                />
-
-                <label htmlFor="transaction_amount" className={`${styles.label_transaction_title}`}>Amount</label>
-                <input
-                    type="text"
-                    className={`form-control ${styles.transaction_title} ${styles.input}`}
-                    id="transaction_amount"
-                    placeholder="Enter the amount of money spent"
-                    value={amount}
-                    onChange={handleAmountChange}
-                    required
-                />
-
+                <InputField isRequired={true} labelTitle={"Title"} placeholder={"Enter a title"} setter={(e) => setTransactionTitle(e.target.value)} value={transactionTitle} />
+                <InputField isRequired={false} labelTitle={"Description"} placeholder={"Enter a description"} setter={(e) => setDescription(e.target.value)} value={description} />
+                <InputField isRequired={true} labelTitle={"Amount"} placeholder={"Enter the amount of money spent"} setter={(e) => handleAmountChange(e)} value={amount} />
                 
                 <div style={{ width: "100%", textAlign: "center", padding: "13px" }}>
                     <select defaultValue="" 

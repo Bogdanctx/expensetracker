@@ -4,6 +4,7 @@ import '../assets/bootstrap-5.0.2-dist/css/bootstrap.min.css';
 import '../assets/bootstrap-icons-1.11.3/font/bootstrap-icons.min.css';
 import '../palette.css';
 import styles from './NewAccount.module.css';
+import InputField from './InputField';
 
 const NewAccount = ({ setDisplayNewAccountCard }) => {
     const [accountName, setAccountName] = useState('');
@@ -54,29 +55,11 @@ const NewAccount = ({ setDisplayNewAccountCard }) => {
         <div className={`${styles.newaccount_card}`}>
             <div className={`justify-content-between ${styles.account_inputs}`}>
                 <h5 className={`${styles.card_title}`} style={{ color: "var(--text-50)" }}>
-                    <label htmlFor="new_account_name" className={`${styles.label_account_name_input}`} id="label_account_name_input">Account name</label>
-                    <input
-                        type="text"
-                        className={`form-control ${styles.new_account_name}`}
-                        id="new_account_name"
-                        placeholder="Enter account name"
-                        value={accountName}
-                        onChange={(e) => setAccountName(e.target.value)}
-                        required
-                    />
+                    <InputField value={accountName} isRequired={true} labelTitle={"Account name"} setter={(e) => setAccountName(e.target.value)} placeholder={"Enter account name"} />
                 </h5>
 
                 <p className={`${styles.card_text}`} style={{ color: "#93C5FD" }}>
-                    Balance: <span style={{ color: "#10B981" }}></span>
-                    <input
-                        type="text"
-                        className={`form-control ${styles.add_funds_input}`}
-                        id="add_funds_input"
-                        placeholder="Enter account balance"
-                        value={balance}
-                        onChange={handleBalanceChange}
-                        required
-                    />
+                    <InputField value={balance} isRequired={true} labelTitle={"Balance"} setter={handleBalanceChange} placeholder={"Enter account balance"} />
                 </p>
             </div>
 
