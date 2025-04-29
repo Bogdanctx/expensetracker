@@ -1,5 +1,3 @@
-import '../assets/bootstrap-5.0.2-dist/css/bootstrap.min.css';
-import '../assets/bootstrap-icons-1.11.3/font/bootstrap-icons.min.css';
 import styles from './InputField.module.css';
 
 const InputField = ({ isRequired, labelTitle, placeholder, setter, value }) => {

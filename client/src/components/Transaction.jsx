@@ -1,7 +1,4 @@
 import axios from 'axios';
-import '../assets/bootstrap-5.0.2-dist/css/bootstrap.min.css';
-import '../assets/bootstrap-icons-1.11.3/font/bootstrap-icons.min.css'
-import '../palette.css'
 import styles from './Transaction.module.css';
 import { useState } from 'react';
 import DateDisplay from './DateDisplay';

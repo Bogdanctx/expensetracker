@@ -1,12 +1,12 @@
 import { useState } from 'react';
 import axios from 'axios';
-import '../assets/bootstrap-5.0.2-dist/css/bootstrap.min.css';
-import '../assets/bootstrap-icons-1.11.3/font/bootstrap-icons.min.css';
-import '../palette.css';
 import styles from './NewTransaction.module.css';
 import transaction_styles from './Transaction.module.css';
 import account_styles from './NewAccount.module.css';
 import InputField from './InputField';
+import AccountsDropdown from './AccountsDropdown';
+import Error from './Error';
+import Button from './Button';
 
 const NewAccount = ({ setDisplayNewTransactionCard, accounts }) => {
     const [transactionTitle, setTransactionTitle] = useState('');
@@ -66,37 +66,17 @@ const NewAccount = ({ setDisplayNewTransactionCard, accounts }) => {
                 <InputField isRequired={true} labelTitle={"Amount"} placeholder={"Enter the amount of money spent"} setter={(e) => handleAmountChange(e)} value={amount} />
                 
                 <div style={{ width: "100%", textAlign: "center", padding: "13px" }}>
-                    <select defaultValue="" 
-                            className="form-select" 
-                            style={{backgroundColor: "var(--primary-500)", color: "var(--text-100)", border: "none"}} 
-                            aria-label='Select an account'
-                            onChange={(e) => setSelectedAccount(e.target.value)}
-                    >
-                        <option value="">
-                            Choose an account (None)
-                        </option>
-                        {accounts.map((account) => (
-                            <option key={account.id} value={account.id}>
-                                {account.name}
-                            </option>
-                        ))}
-                    </select>
+                    <AccountsDropdown onChange={(e) => setSelectedAccount(e.target.value)} options={accounts} defaultOption={"Choose an account (None)"} />
                 </div>
             </div>
 
             <div className={`${account_styles.new_account_buttons} ${styles.new_transaction_buttons}`}>
-                <button type="button" className={`btn btn-success ${account_styles.account_handle_button}`} onClick={handleCreate}>
-                    Create
-                </button>
+                <Button style={`btn btn-success`} text={'Create'} onClick={handleCreate} />
                 <br />
-                <button type="button" className={`btn btn-danger ${account_styles.account_handle_button}`} onClick={() => setDisplayNewTransactionCard(false)}>
-                    Cancel
-                </button>
+                <Button style={`btn btn-danger`} text={'Cancel'} onClick={() => setDisplayNewTransactionCard(false)} />
             </div>
 
-            {errorMessage != '' && (
-                <h4 className={`${account_styles.new_account_error}`}>[ERROR] {errorMessage}</h4>
-            )}
+            <Error message={errorMessage} style={styles.errorMessage} />
         </div>
     )
 };

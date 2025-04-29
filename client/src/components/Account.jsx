@@ -1,8 +1,6 @@
-import '../assets/bootstrap-5.0.2-dist/css/bootstrap.min.css';
-import '../assets/bootstrap-icons-1.11.3/font/bootstrap-icons.min.css'
-import '../palette.css'
 import styles from './Account.module.css';
 import DateDisplay from './DateDisplay';
+import Button from './Button';
 
 const Account = ({ account, setSelectedAccount, onDelete }) => {
     return (
@@ -13,23 +11,13 @@ const Account = ({ account, setSelectedAccount, onDelete }) => {
                 </h5>
 
                 <div className={`d-flex`}>
-                    <button
-                        type="button"
-                        className={`btn p-2 d-flex align-items-center justify-content-center ${styles.card_button}`}
-                        aria-label="Fullscreen"
-                        onClick={() => setSelectedAccount(account) }
-                    >
-                        <i className="bi bi-arrows-fullscreen"></i>
-                    </button>
-
-                    <button
-                        type="button"
-                        className={`btn p-2 d-flex align-items-center justify-content-center ${styles.card_button}`}
-                        aria-label="Close"
-                        onClick={() => onDelete(account.id)}
-                    >
-                        <i className="bi bi-x-lg"></i>
-                    </button>
+                    <Button style={`btn p-2 d-flex align-items-center justify-content-center ${styles.card_button}`}
+                            onClick={() => setSelectedAccount(account)}
+                            icon={<i className="bi bi-arrows-fullscreen" />} />
+                    
+                    <Button style={`btn p-2 d-flex align-items-center justify-content-center ${styles.card_button}`}
+                            onClick={() => onDelete(account.id)}
+                            icon={<i className="bi bi-x-lg" />} />
                 </div>
             </div>
             <p className={`card-text`} style={{ color: "#93C5FD" }}>
@@ -38,6 +26,7 @@ const Account = ({ account, setSelectedAccount, onDelete }) => {
                     ${account.balance} { /* <span style={{ color: "#9CA3AF" }}> (${account.initialBalance}) </span> */ }
                 </span>
             </p>
+
             <DateDisplay dateString={account.created} />
         </div>
     )

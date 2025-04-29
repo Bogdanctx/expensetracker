@@ -1,10 +1,9 @@
 import { useState } from 'react';
 import axios from 'axios';
-import '../assets/bootstrap-5.0.2-dist/css/bootstrap.min.css';
-import '../assets/bootstrap-icons-1.11.3/font/bootstrap-icons.min.css';
-import '../palette.css';
 import styles from './NewAccount.module.css';
 import InputField from './InputField';
+import Error from './Error';
+import Button from './Button';
 
 const NewAccount = ({ setDisplayNewAccountCard }) => {
     const [accountName, setAccountName] = useState('');
@@ -64,18 +63,12 @@ const NewAccount = ({ setDisplayNewAccountCard }) => {
             </div>
 
             <div className={`${styles.new_account_buttons}`}>
-                <button type="button" className={`btn btn-success ${styles.account_handle_button}`} onClick={handleCreate}>
-                    Create
-                </button>
-                <br />
-                <button type="button" className={`btn btn-danger ${styles.account_handle_button}`} onClick={() => setDisplayNewAccountCard(false)}>
-                    Cancel
-                </button>
+                <Button style={`btn btn-success ${styles.account_handle_button}`} text={'Create'} onClick={handleCreate} />
+                <Button style={`btn btn-danger ${styles.account_handle_button}`} text={'Cancel'} onClick={() => setDisplayNewAccountCard(false)} />
             </div>
 
-            {errorMessage != '' && (
-                <h4 className={`${styles.new_account_error}`} id="new_account_error">[ERROR] {errorMessage}</h4>
-            )}
+            
+            <Error message={errorMessage} style={styles.errorMessage} /> 
         </div>
     );
 };
