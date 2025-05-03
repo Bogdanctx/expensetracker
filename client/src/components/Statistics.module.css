@@ -1,0 +1,20 @@
+.statsContainer {
+    background-color: var(--background-800);
+    padding: 1.5rem;
+    border-radius: 12px;
+    color: var(--text-100);
+    margin: 1rem 0;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.statsContainer h2 {
+    color: var(--accent-200);
+}
+
+.statsContainer ul {
+    padding-left: 1rem;
+}
+
+.statsContainer li {
+    margin-bottom: 6px;
+}

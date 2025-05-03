@@ -1,0 +1,46 @@
+import { useMemo } from "react";
+import styles from './Statistics.module.css';
+
+const Statistics = ({ transactions }) => {
+    const stats = useMemo(() => {
+        const summary = {
+            totalAmount: 0,
+            totalCount: transactions.length,
+            byCategory: {},
+        };
+
+        transactions.forEach(tx => {
+            summary.totalAmount += tx.amount;
+
+            if (!summary.byCategory[tx.type]) {
+                summary.byCategory[tx.type] = 0;
+            }
+
+            summary.byCategory[tx.type] += tx.amount;
+        });
+
+        return summary;
+    }, [transactions]);
+
+    return (
+        <div className={styles.statsContainer}>
+            <p><strong>Total Transactions:</strong> {stats.totalCount}</p>
+            <p><strong>Total Amount Spent:</strong> ${stats.totalAmount.toFixed(2)}</p>
+
+            <h4>Spending breakdown</h4>
+            <ul>
+                {Object.entries(stats.byCategory).map(([type, amount]) => {
+                    const percentage = (amount / stats.totalAmount) * 100;
+                    return (
+                        <li key={type}>
+                            <strong>{type}:</strong> ${amount.toFixed(2)} —{" "}
+                            {percentage.toFixed(1)}% of total spending
+                        </li>
+                    );
+                })}
+            </ul>
+        </div>
+    );
+};
+
+export default Statistics;
