@@ -1,0 +1,103 @@
+.goalCard {
+    padding: 16px;
+    border-radius: 12px;
+    box-shadow: 0 0 8px rgba(0,0,0,0.15);
+    width: 100%;
+    max-width: 400px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.title {
+    color: var(--text-50);
+    margin: 0;
+    font-size: 1.2rem;
+}
+
+.status {
+    font-size: 0.9rem;
+    font-weight: bold;
+    padding: 4px 8px;
+    border-radius: 8px;
+}
+
+.completed {
+    background-color: #10B981;
+    color: white;
+}
+
+.inProgress {
+    background-color: #FBBF24;
+    color: black;
+}
+
+.description {
+    color: var(--text-300);
+    margin-top: 8px;
+    font-size: 0.95rem;
+}
+
+.progressSection {
+    margin-top: 12px;
+}
+
+.progressBarContainer {
+    background-color: var(--background-600);
+    height: 10px;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.progressBar {
+    background-color: #3B82F6;
+    height: 100%;
+    transition: width 0.3s ease;
+}
+
+.progressText {
+    font-size: 0.9rem;
+    color: var(--text-200);
+    margin-top: 4px;
+}
+
+.accountText {
+    font-size: 0.85rem;
+    color: var(--text-400);
+    margin-top: 10px;
+}
+
+.actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.statusIcon {
+    font-size: 1.2rem;
+}
+
+.deleteBtn {
+    background: none;
+    border: none;
+    font-size: 1.1rem;
+    cursor: pointer;
+    color: #ef4444;
+    transition: transform 0.2s ease;
+}
+
+.deleteBtn:hover {
+    transform: scale(1.2);
+}
+
+
+.finishButton {
+    width: 100%;
+    border: 0;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    outline: none;
+}

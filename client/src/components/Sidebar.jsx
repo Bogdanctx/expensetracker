@@ -1,6 +1,6 @@
 import styles from './Sidebar.module.css';
 
-const Sidebar = ({ setDisplayNewAccountCard, setDisplayNewTransactionCard }) => {
+const Sidebar = ({ setDisplayNewAccountCard, setDisplayNewTransactionCard, setDisplayNewGoalCard }) => {
     return (
         <div className={`${styles.sidebar}`} id="sidebar">
             <h1 className={`${styles.sidebar_title}`} id="sidebar_title">EXPENSE <br /> TRACKER</h1>
@@ -13,7 +13,7 @@ const Sidebar = ({ setDisplayNewAccountCard, setDisplayNewTransactionCard }) => 
                 <i className="bi bi-plus-square" style={{ float: "left" }}></i>
                 Add transaction
             </button>
-            <button type="button" className={`${styles.sidebar_button}`} onClick={() => setDisplayNewAccountCard(true)}>
+            <button type="button" className={`${styles.sidebar_button}`} onClick={() => setDisplayNewGoalCard(true)}>
                 <i className="bi bi-plus-square" style={{ float: "left" }}></i>
                 Add goal
             </button>

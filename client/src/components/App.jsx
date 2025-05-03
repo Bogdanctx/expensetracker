@@ -7,13 +7,18 @@ import NewAccount from './NewAccount';
 import styles from './App.module.css';
 import Transaction from './Transaction';
 import NewTransaction from './NewTransaction';
+import NewGoal from './NewGoal';
+import Goal from './Goal';
 
 function App() {
     const [accounts, setAccounts] = useState([]);
     const [transactions, setTransactions] = useState([]);
+    const [goals, setGoals] = useState([]);
     const [selectedAccount, setSelectedAccount] = useState(null);
     const [displayNewAccountCard, setDisplayNewAccountCard] = useState(false);
     const [displayNewTransactionCard, setDisplayNewTransactionCard] = useState(false);
+    const [displayNewGoalCard, setDisplayNewGoalCard] = useState(false);
+    
 
     useEffect(() => {
         const fetchData = async (setter, link) => {
@@ -25,6 +30,7 @@ function App() {
         
         fetchData(setAccounts, "http://localhost:8080/api/accounts");
         fetchData(setTransactions, "http://localhost:8080/api/transactions");
+        fetchData(setGoals, "http://localhost:8080/api/goals");
     }, []);
 
     const deleteTransaction = async (id) => {
@@ -47,9 +53,19 @@ function App() {
         setAccounts(prev => prev.filter(a => a.id !== id));
     }
 
+    const deleteGoal = async (id) => {
+        try {
+            await axios.delete(`http://localhost:8080/api/goals/delete/${id}`);
+        } catch (error) {
+            console.error(error);
+        }
+
+        setGoals(prev => prev.filter(a => a.id !== id));    
+    }
+
     return (
         <div style={{ display: "flex" }}>
-            <Sidebar setDisplayNewAccountCard={setDisplayNewAccountCard} setDisplayNewTransactionCard={setDisplayNewTransactionCard} />
+            <Sidebar setDisplayNewAccountCard={setDisplayNewAccountCard} setDisplayNewTransactionCard={setDisplayNewTransactionCard} setDisplayNewGoalCard={setDisplayNewGoalCard} />
             <div className={`${styles.content}`} id="content">
                 <div className={`${styles.first_half}`} id="first_half">
                     <h1 className={`${styles.box_title}`} >TRANSACTIONS</h1>
@@ -82,6 +98,12 @@ function App() {
                     
                     <div id='lower_box' className={`${styles.lower_box}`}>
                         <h1 className={`${styles.box_title}`} >GOALS</h1>
+                        {displayNewGoalCard && (
+                            <NewGoal setDisplayNewGoalCard={setDisplayNewGoalCard} accounts={accounts} />
+                        )}
+                        {goals.map((goal) => (
+                            <Goal key={goal.id} goal={goal} onDelete={deleteGoal} />
+                        ))}
                     </div>
                 </div>
                 
