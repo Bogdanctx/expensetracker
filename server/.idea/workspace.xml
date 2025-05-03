@@ -5,28 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="df3e220b-0805-4eca-b674-1d8bd584c04e" name="Changes" comment="Created Naive Bayes to classify transaction types&#10;Added a dataset with 5000 samples">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/expensetracker/expensetracker/config/CorsConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/src/components/Account.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/components/Account.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/src/components/AccountTransactionView.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/components/AccountTransactionView.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/src/components/AccountTransactionView.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/components/AccountTransactionView.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/src/components/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/components/App.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/src/components/ExpandedAccountView.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/components/ExpandedAccountView.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/src/components/Transaction.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/components/Transaction.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/src/components/Transaction.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/components/Transaction.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/expensetracker/expensetracker/model/Goal.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mvnw" beforeDir="false" afterPath="$PROJECT_DIR$/mvnw" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/expensetracker/expensetracker/ai/Tokenizer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/expensetracker/expensetracker/ai/Tokenizer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/expensetracker/expensetracker/controller/AccountController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/expensetracker/expensetracker/controller/AccountController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/expensetracker/expensetracker/controller/TransactionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/expensetracker/expensetracker/controller/TransactionController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/expensetracker/expensetracker/model/Transaction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/expensetracker/expensetracker/model/Transaction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/expensetracker/expensetracker/ai/Tokenizer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/expensetracker/expensetracker/ai/Tokenizer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/expensetracker/expensetracker/controller/AccountController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/expensetracker/expensetracker/controller/AccountController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/expensetracker/expensetracker/controller/TransactionController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/expensetracker/expensetracker/controller/TransactionController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/expensetracker/expensetracker/model/Transaction$TYPES.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/expensetracker/expensetracker/model/Transaction$TYPES.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/expensetracker/expensetracker/model/Transaction.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/expensetracker/expensetracker/model/Transaction.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,6 +23,18 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;Bogdanctx&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/bogdanctx/expensetracker&quot;,
+    &quot;accountId&quot;: &quot;bb1f0919-7391-4f11-af20-331d573ab6ca&quot;
+  }
+}</component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 6
 }</component>
@@ -63,6 +55,8 @@
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
     &quot;Spring Boot.ExpenseTrackerApplication.executor&quot;: &quot;Run&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/expensetracker/server&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -95,11 +89,12 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9823dce3aa75-fbdcb00ec9e3-intellij.indexing.shared.core-IU-251.23774.435" />
-        <option value="bundled-js-predefined-d6986cc7102b-f27c65a3e318-JavaScript-IU-251.23774.435" />
+        <option value="bundled-jdk-9823dce3aa75-a94e463ab2e7-intellij.indexing.shared.core-IU-243.25659.59" />
+        <option value="bundled-js-predefined-d6986cc7102b-1632447f56bf-JavaScript-IU-243.25659.59" />
       </set>
     </attachedChunks>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="df3e220b-0805-4eca-b674-1d8bd584c04e" name="Changes" comment="" />
@@ -112,6 +107,8 @@
       <workItem from="1745769123419" duration="11780000" />
       <workItem from="1745782397559" duration="7212000" />
       <workItem from="1745819788795" duration="7062000" />
+      <workItem from="1746302938120" duration="118000" />
+      <workItem from="1746303420023" duration="1729000" />
     </task>
     <task id="LOCAL-00001" summary="Accept negative values for funds&#10;Deleted initialBalance text">
       <option name="closed" value="true" />
