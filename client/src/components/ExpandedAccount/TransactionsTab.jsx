@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
-import styles from './AccountTransactionView.module.css';
+import styles from './TransactionsTab.module.css';
 
-const AccountTransactionView = ({ transaction, onDelete }) => {
+const TransactionsTab = ({ transaction, onDelete }) => {
     const date = new Date(transaction.added);
     const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
@@ -68,4 +67,4 @@ const AccountTransactionView = ({ transaction, onDelete }) => {
     );
 };
 
-export default AccountTransactionView;
+export default TransactionsTab;

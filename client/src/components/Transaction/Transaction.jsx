@@ -1,9 +1,9 @@
 import axios from 'axios';
 import styles from './Transaction.module.css';
 import { useState } from 'react';
-import DateDisplay from './DateDisplay';
+import DateDisplay from '../ui/DateDisplay';
 
-const Transaction = ({ transaction, onDelete }) => {
+const Transaction = ({ transaction, deleteTransaction }) => {
     const [isEditingType, setIsEditingType] = useState(false);
     const [currentType, setCurrentType] = useState(transaction.type);
     const transactionTypes = ["Groceries", "Dining", "Transportation", "Utilities", "Entertainment", "Healthcare", "Shopping", "Other"];
@@ -59,7 +59,7 @@ const Transaction = ({ transaction, onDelete }) => {
                         type="button"
                         className={`btn p-2 d-flex align-items-center justify-content-center ${styles.card_button}`}
                         aria-label="Close"
-                        onClick={() => onDelete(transaction.id)}
+                        onClick={() => deleteTransaction('transactions', transaction.id)}
                     >
                         <i className="bi bi-x-lg"></i>
                     </button>
@@ -78,6 +78,7 @@ const Transaction = ({ transaction, onDelete }) => {
                     <i className={`bi bi-bank`} style={{ color: "var(--secondary-200)" }} /> {transaction.account.name}
                 </p>
             )}
+            
             <DateDisplay dateString={transaction.added} />
         </div>
     )

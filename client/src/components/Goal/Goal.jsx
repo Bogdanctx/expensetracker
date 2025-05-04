@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import axios from 'axios';
 import styles from './Goal.module.css';
-import account from './Account.module.css';
+import account from '../Account/Account.module.css';
 
-const Goal = ({ accounts, goal, onDelete }) => {
+const Goal = ({ accounts, goal, deleteGoal }) => {
     const [isEditingAccount, setIsEditingAccount] = useState(false);
     const [selectedAccountId, setSelectedAccountId] = useState(goal.attachedAccount.id);
     const [attachedAccount, setAttachedAccount] = useState(goal.attachedAccount);
@@ -48,7 +48,7 @@ const Goal = ({ accounts, goal, onDelete }) => {
                             type="button"
                             className={`btn p-2 d-flex align-items-center justify-content-center ${account.card_button}`}
                             aria-label="Close"
-                            onClick={() => onDelete(goal.id)}
+                            onClick={() => deleteGoal('goals', goal.id)}
                         >
                             <i className="bi bi-x-lg"></i>
                         </button>
@@ -76,9 +76,9 @@ const Goal = ({ accounts, goal, onDelete }) => {
                             autoFocus
                             className={styles.select_account}
                         >
-                            {accounts.map((acc) => (
-                                <option key={acc.id} value={acc.id} className={styles.account_option}>
-                                    {acc.name}
+                            {accounts.map((account) => (
+                                <option key={account.id} value={account.id} className={styles.account_option}>
+                                    {account.name}
                                 </option>
                             ))}
                         </select>
@@ -95,7 +95,7 @@ const Goal = ({ accounts, goal, onDelete }) => {
                     type="button"
                     className={`btn-success ${styles.finishButton}`}
                     aria-label="Finish"
-                    onClick={() => onDelete(goal.id)}
+                    onClick={() => deleteGoal('goals', goal.id)}
                 >
                     Click to finish
                 </button>

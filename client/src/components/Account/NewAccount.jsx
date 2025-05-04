@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import axios from 'axios';
 import styles from './NewAccount.module.css';
-import InputField from './InputField';
-import Error from './Error';
-import Button from './Button';
+import InputField from '../ui/InputField';
+import Error from '../ui/Error';
+import Button from '../ui/Button';
 
 const NewAccount = ({ setDisplayNewAccountCard }) => {
     const [accountName, setAccountName] = useState('');

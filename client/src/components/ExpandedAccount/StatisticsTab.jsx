@@ -1,7 +1,7 @@
 import { useMemo } from "react";
-import styles from './Statistics.module.css';
+import styles from './StatisticsTab.module.css';
 
-const Statistics = ({ transactions }) => {
+const StatisticsTab = ({ transactions }) => {
     const stats = useMemo(() => {
         const summary = {
             totalAmount: 0,
@@ -43,4 +43,4 @@ const Statistics = ({ transactions }) => {
     );
 };
 
-export default Statistics;
+export default StatisticsTab;

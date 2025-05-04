@@ -1,11 +1,11 @@
 import { useState } from "react";
 import axios from "axios";
-import styles from './ExpandedAccountView.module.css';
-import AccountTransactionView from './AccountTransactionView';
-import Statistics from './Statistics';
-import AccountGoalsView from "./AccountGoalsView";
+import styles from './ExpandedAccount.module.css';
+import TransactionsTab from './TransactionsTab';
+import StatisticsTab from './StatisticsTab';
+import GoalsTab from './GoalsTab'
 
-const ExpandedAccountView = ({ account, accounts, setSelectedAccount, transactions, goals, onDelete }) => {
+const ExpandedAccount = ({ account, accounts, setSelectedAccount, transactions, goals, onDelete }) => {
     const [activeTab, setActiveTab] = useState("statistics");
     const [editingAccount, setEditingAccount] = useState(false);
     const [accountName, setAccountName] = useState(account.name);
@@ -166,20 +166,20 @@ const ExpandedAccountView = ({ account, accounts, setSelectedAccount, transactio
             {activeTab === "statistics" && (
                 <div>
                     <h4>📊 Statistics</h4>
-                    <Statistics transactions={transactions} />
+                    <StatisticsTab transactions={transactions} />
                 </div>
             )}
             {activeTab === "goals" && (
                 <div>
                     <h4>🎯 Goals</h4>
-                    <AccountGoalsView goals={goals} accounts={accounts} onDelete={onDelete} />
+                    <GoalsTab goals={goals} accounts={accounts} onDelete={onDelete} />
                 </div>
             )}
             {activeTab === "transactions" && (
                 <div>
                     <h4>💳 Transactions</h4>
                     {transactions.map((t) => (
-                        <AccountTransactionView key={t.id} transaction={t} setShouldReload={setShouldReload} onDelete={onDelete} />
+                        <TransactionsTab key={t.id} transaction={t} setShouldReload={setShouldReload} onDelete={onDelete} />
                     ))}
               </div>
             )}
@@ -188,4 +188,4 @@ const ExpandedAccountView = ({ account, accounts, setSelectedAccount, transactio
   );
 };
 
-export default ExpandedAccountView;
+export default ExpandedAccount;

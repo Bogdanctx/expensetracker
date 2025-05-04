@@ -2,11 +2,11 @@ import { useState } from 'react';
 import axios from 'axios';
 import styles from './NewTransaction.module.css';
 import transaction_styles from './Transaction.module.css';
-import account_styles from './NewAccount.module.css';
-import InputField from './InputField';
-import AccountsDropdown from './AccountsDropdown';
-import Error from './Error';
-import Button from './Button';
+import account_styles from '../Account/NewAccount.module.css';
+import InputField from '../ui/InputField';
+import AccountsDropdown from '../Account/AccountsDropdown';
+import Error from '../ui/Error';
+import Button from '../ui/Button';
 
 const NewAccount = ({ setDisplayNewTransactionCard, accounts }) => {
     const [transactionTitle, setTransactionTitle] = useState('');

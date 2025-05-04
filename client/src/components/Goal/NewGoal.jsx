@@ -1,11 +1,11 @@
 import { useState } from 'react';
 import axios from 'axios';
-import styles from './NewAccount.module.css';
+import styles from '../Account/NewAccount.module.css';
 import goalStyles from './NewGoal.module.css';
-import InputField from './InputField';
-import Error from './Error';
-import Button from './Button';
-import AccountsDropdown from './AccountsDropdown';
+import InputField from '../ui/InputField';
+import Error from '../ui/Error';
+import Button from '../ui/Button';
+import AccountsDropdown from '../Account/AccountsDropdown';
 
 const NewGoal = ({ accounts, setDisplayNewGoalCard }) => {
     const [goalName, setGoalName] = useState('');
