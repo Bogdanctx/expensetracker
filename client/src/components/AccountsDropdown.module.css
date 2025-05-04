@@ -1,0 +1,11 @@
+.form-select {
+    background-color: var(--primary-500);
+    color: var(--text-100);
+    border: none;
+}
+
+.dropdownLabel {
+    color: white;
+    font-size: 13px;
+    font-family: "Righteous", sans-serif;
+}

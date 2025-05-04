@@ -1,0 +1,23 @@
+.container {
+    padding: 20px;
+    border-radius: 12px;
+    margin-top: 1rem;
+    width: 100%;
+}
+
+.heading {
+    font-size: 1.5rem;
+    color: var(--text-100);
+    margin-bottom: 1rem;
+}
+
+.noGoals {
+    color: var(--text-300);
+    font-style: italic;
+}
+
+.goalList {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}

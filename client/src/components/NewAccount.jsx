@@ -22,6 +22,12 @@ const NewAccount = ({ setDisplayNewAccountCard }) => {
             setErrorMessage('Please enter the account\'s name.');
             return;
         }
+        else {
+            if(accountName == 'None') {
+                setErrorMessage('Account name unavailable.');
+                return;
+            }
+        }
         if(!balance) {
             setErrorMessage('Please enter the account\'s balance.');
             return;

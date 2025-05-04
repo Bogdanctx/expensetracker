@@ -1,8 +1,7 @@
 .newgoal_card {
     background-color: var(--background-800);
     border-radius: 12px;
-    padding: 20px;
-    width: 100%;
+    width: min-content;
     max-width: 500px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     margin: auto;
@@ -34,7 +33,9 @@
 }
 
 .errorMessage {
-    margin-top: 10px;
-    color: var(--danger);
-    font-weight: 500;
+    font-size: 16px;
+    color: rgb(156, 60, 60);
+    text-align: center;    
+    font-family: "Righteous", sans-serif;
 }
+

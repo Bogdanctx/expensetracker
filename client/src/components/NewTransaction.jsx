@@ -66,7 +66,7 @@ const NewAccount = ({ setDisplayNewTransactionCard, accounts }) => {
                 <InputField isRequired={true} labelTitle={"Amount"} placeholder={"Enter the amount of money spent"} setter={(e) => handleAmountChange(e)} value={amount} />
                 
                 <div style={{ width: "100%", textAlign: "center", padding: "13px" }}>
-                    <AccountsDropdown onChange={(e) => setSelectedAccount(e.target.value)} options={accounts} defaultOption={"Choose an account (None)"} />
+                    <AccountsDropdown onChange={(e) => setSelectedAccount(e.target.value)} options={accounts} defaultOption={'None'} />
                 </div>
             </div>
 

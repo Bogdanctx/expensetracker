@@ -3,8 +3,9 @@ import axios from "axios";
 import styles from './ExpandedAccountView.module.css';
 import AccountTransactionView from './AccountTransactionView';
 import Statistics from './Statistics';
+import AccountGoalsView from "./AccountGoalsView";
 
-const ExpandedAccountView = ({ account, setSelectedAccount, transactions, onDelete }) => {
+const ExpandedAccountView = ({ account, accounts, setSelectedAccount, transactions, goals, onDelete }) => {
     const [activeTab, setActiveTab] = useState("statistics");
     const [editingAccount, setEditingAccount] = useState(false);
     const [accountName, setAccountName] = useState(account.name);
@@ -165,13 +166,13 @@ const ExpandedAccountView = ({ account, setSelectedAccount, transactions, onDele
             {activeTab === "statistics" && (
                 <div>
                     <h4>📊 Statistics</h4>
-                    <Statistics transactions={transactions.filter(t => t.account.id == account.id)} />
+                    <Statistics transactions={transactions} />
                 </div>
             )}
             {activeTab === "goals" && (
                 <div>
                     <h4>🎯 Goals</h4>
-                    <p>Coming soon: savings goals attached to this account.</p>
+                    <AccountGoalsView goals={goals} accounts={accounts} onDelete={onDelete} />
                 </div>
             )}
             {activeTab === "transactions" && (
