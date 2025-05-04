@@ -37,6 +37,13 @@
     overflow-y: auto;
 } 
 
+.lower_box {
+    height: 50vh;
+    max-height: 50vh;
+
+    overflow-y: auto;
+}
+
 .box_title {
     color: white;
     font-family: "Righteous", sans-serif;
@@ -53,5 +60,14 @@
     row-gap: 2vw;
     column-gap: 4vh;
 
+    align-items: center;
+}
+
+.inner_lower_box {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    row-gap: 2vw;
+    column-gap: 4vh;
     align-items: center;
 }

@@ -98,12 +98,14 @@ function App() {
                     
                     <div id='lower_box' className={`${styles.lower_box}`}>
                         <h1 className={`${styles.box_title}`} >GOALS</h1>
-                        {displayNewGoalCard && (
-                            <NewGoal setDisplayNewGoalCard={setDisplayNewGoalCard} accounts={accounts} />
-                        )}
-                        {goals.map((goal) => (
-                            <Goal key={goal.id} goal={goal} onDelete={deleteGoal} />
-                        ))}
+                        <div class={`${styles.inner_lower_box}`} >
+                            {displayNewGoalCard && (
+                                <NewGoal setDisplayNewGoalCard={setDisplayNewGoalCard} accounts={accounts} />
+                            )}
+                            {goals.map((goal) => (
+                                <Goal key={goal.id} goal={goal} onDelete={deleteGoal} />
+                            ))}
+                        </div>
                     </div>
                 </div>
                 
