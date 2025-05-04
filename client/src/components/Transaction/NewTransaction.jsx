@@ -8,7 +8,7 @@ import AccountsDropdown from '../Account/AccountsDropdown';
 import Error from '../ui/Error';
 import Button from '../ui/Button';
 
-const NewAccount = ({ setDisplayNewTransactionCard, accounts }) => {
+const NewAccount = ({ setShowNewTransactionComponent, accounts }) => {
     const [transactionTitle, setTransactionTitle] = useState('');
     const [description, setDescription] = useState('');
     const [selectedAccount, setSelectedAccount] = useState('None');
@@ -44,7 +44,7 @@ const NewAccount = ({ setDisplayNewTransactionCard, accounts }) => {
 
         try {
             await axios.post('http://localhost:8080/api/transactions/create', newTransaction);
-            setDisplayNewTransactionCard(false);
+            setShowNewTransactionComponent(false);
 
             window.location.reload();
         } catch (error) {
@@ -73,7 +73,7 @@ const NewAccount = ({ setDisplayNewTransactionCard, accounts }) => {
             <div className={`${account_styles.new_account_buttons} ${styles.new_transaction_buttons}`}>
                 <Button style={`btn btn-success`} text={'Create'} onClick={handleCreate} />
                 <br />
-                <Button style={`btn btn-danger`} text={'Cancel'} onClick={() => setDisplayNewTransactionCard(false)} />
+                <Button style={`btn btn-danger`} text={'Cancel'} onClick={() => setShowNewTransactionComponent(false)} />
             </div>
 
             <Error message={errorMessage} style={styles.errorMessage} />

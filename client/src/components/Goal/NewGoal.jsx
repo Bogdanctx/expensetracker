@@ -7,7 +7,7 @@ import Error from '../ui/Error';
 import Button from '../ui/Button';
 import AccountsDropdown from '../Account/AccountsDropdown';
 
-const NewGoal = ({ accounts, setDisplayNewGoalCard }) => {
+const NewGoal = ({ accounts, setShowNewGoalComponent }) => {
     const [goalName, setGoalName] = useState('');
     const [targetAmount, setTargetAmount] = useState('');
     const [description, setDescription] = useState('');
@@ -46,7 +46,7 @@ const NewGoal = ({ accounts, setDisplayNewGoalCard }) => {
 
         try {
             await axios.post('http://localhost:8080/api/goals/create', newGoal);
-            setDisplayNewGoalCard(false);
+            setShowNewGoalComponent(false);
 
             window.location.reload();
         } catch (error) {
@@ -78,7 +78,7 @@ const NewGoal = ({ accounts, setDisplayNewGoalCard }) => {
 
             <div className={`${styles.new_account_buttons}`}>
                 <Button style={`btn btn-success ${styles.account_handle_button}`} text={'Create'} onClick={handleCreate} />
-                <Button style={`btn btn-danger ${styles.account_handle_button}`} text={'Cancel'} onClick={() => setDisplayNewGoalCard(false)} />
+                <Button style={`btn btn-danger ${styles.account_handle_button}`} text={'Cancel'} onClick={() => setShowNewGoalComponent(false)} />
             </div>
 
             <Error message={errorMessage} style={goalStyles.errorMessage} />

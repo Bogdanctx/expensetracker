@@ -6,6 +6,7 @@
     height: fit-content;
     max-width: 18vw;
     min-width: 18vw;
+    border: 2px solid var(--accent-600);
 }
 
 .card_title {

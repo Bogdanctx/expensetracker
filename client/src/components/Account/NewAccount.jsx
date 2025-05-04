@@ -5,7 +5,7 @@ import InputField from '../ui/InputField';
 import Error from '../ui/Error';
 import Button from '../ui/Button';
 
-const NewAccount = ({ setDisplayNewAccountCard }) => {
+const NewAccount = ({ setShowNewAccountComponent }) => {
     const [accountName, setAccountName] = useState('');
     const [balance, setBalance] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
@@ -42,7 +42,7 @@ const NewAccount = ({ setDisplayNewAccountCard }) => {
 
         try {
             await axios.post('http://localhost:8080/api/accounts/create', newAccount);
-            setDisplayNewAccountCard(false);
+            setShowNewAccountComponent(false);
 
             window.location.reload();
         } catch (error) {
@@ -70,7 +70,7 @@ const NewAccount = ({ setDisplayNewAccountCard }) => {
 
             <div className={`${styles.new_account_buttons}`}>
                 <Button style={`btn btn-success ${styles.account_handle_button}`} text={'Create'} onClick={handleCreate} />
-                <Button style={`btn btn-danger ${styles.account_handle_button}`} text={'Cancel'} onClick={() => setDisplayNewAccountCard(false)} />
+                <Button style={`btn btn-danger ${styles.account_handle_button}`} text={'Cancel'} onClick={() => setShowNewAccountComponent(false)} />
             </div>
 
             

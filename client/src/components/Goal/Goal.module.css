@@ -1,9 +1,10 @@
 .goalCard {
-    padding: 1rem 1rem 0rem 1rem;
     border-radius: 15px;
-    color: var(--text-50);
+
     min-width: 300px;
     max-width: 400px;
+
+    border: 2px solid var(--accent-600);
 }
 
 .header {
@@ -75,7 +76,6 @@
 }
 
 .finishButton {
-    margin: 0.5rem auto 0;
     display: block;
     padding: 0.5rem 1rem;
     font-weight: bold;

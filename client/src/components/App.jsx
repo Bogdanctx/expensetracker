@@ -108,7 +108,7 @@ function App() {
                     {selectedAccount && (
                         <ExpandedAccount account={selectedAccount} accounts={accounts} setSelectedAccount={setSelectedAccount} 
                                                 transactions={transactions.filter((transaction) => transaction.account && transaction.account.id == selectedAccount.id)}
-                                                onDelete={deleteItem} goals={goals.filter((goal) => goal.attachedAccount.id == selectedAccount.id)} />
+                                                deleteItem={deleteItem} goals={goals.filter((goal) => goal.attachedAccount.id == selectedAccount.id)} />
                     )}
             </div>
         </div>

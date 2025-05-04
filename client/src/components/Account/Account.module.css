@@ -8,6 +8,7 @@
 }
 
 .card {
+    border: 2px solid var(--accent-600);
     background-color: var(--background-900);
     width: fit-content; 
     border-radius: 10px;

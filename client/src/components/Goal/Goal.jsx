@@ -39,8 +39,8 @@ const Goal = ({ accounts, goal, deleteGoal }) => {
     };
 
     return (
-        <div style={{ backgroundColor: "var(--background-800)", width: "fit-content", borderRadius: "15px" }}>
-            <div className={styles.goalCard}>
+        <div className={styles.goalCard} style={{ borderBottomColor: percentageComplete >= 100 ? 'transparent' : 'var(--accent-600)' }}>
+            <div style={{ padding: "15px" }}>
                 <div className={styles.header}>
                     <h5 className={styles.title}>{goal.title}</h5>
                     <div className={styles.actions}>

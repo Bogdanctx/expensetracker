@@ -5,7 +5,7 @@ import TransactionsTab from './TransactionsTab';
 import StatisticsTab from './StatisticsTab';
 import GoalsTab from './GoalsTab'
 
-const ExpandedAccount = ({ account, accounts, setSelectedAccount, transactions, goals, onDelete }) => {
+const ExpandedAccount = ({ account, accounts, setSelectedAccount, transactions, goals, deleteItem }) => {
     const [activeTab, setActiveTab] = useState("statistics");
     const [editingAccount, setEditingAccount] = useState(false);
     const [accountName, setAccountName] = useState(account.name);
@@ -172,15 +172,13 @@ const ExpandedAccount = ({ account, accounts, setSelectedAccount, transactions, 
             {activeTab === "goals" && (
                 <div>
                     <h4>🎯 Goals</h4>
-                    <GoalsTab goals={goals} accounts={accounts} onDelete={onDelete} />
+                    <GoalsTab goals={goals.filter((goal) => goal.attachedAccount.id == account.id)} accounts={accounts} deleteGoal={deleteItem} />
                 </div>
             )}
             {activeTab === "transactions" && (
                 <div>
                     <h4>💳 Transactions</h4>
-                    {transactions.map((t) => (
-                        <TransactionsTab key={t.id} transaction={t} setShouldReload={setShouldReload} onDelete={onDelete} />
-                    ))}
+                    <TransactionsTab transactions={transactions.filter((transaction) => transaction.account.id == account.id)} deleteTransaction={deleteItem} />
               </div>
             )}
         </div>
