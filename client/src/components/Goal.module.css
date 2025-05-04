@@ -1,5 +1,5 @@
 .goalCard {
-    padding: 1rem;
+    padding: 1rem 1rem 0rem 1rem;
     border-radius: 15px;
     color: var(--text-50);
     min-width: 300px;
