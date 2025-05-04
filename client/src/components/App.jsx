@@ -103,7 +103,7 @@ function App() {
                                 <NewGoal setDisplayNewGoalCard={setDisplayNewGoalCard} accounts={accounts} />
                             )}
                             {goals.map((goal) => (
-                                <Goal key={goal.id} goal={goal} onDelete={deleteGoal} />
+                                <Goal key={goal.id} accounts={accounts} goal={goal} onDelete={deleteGoal} />
                             ))}
                         </div>
                     </div>
